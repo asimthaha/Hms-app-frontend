@@ -25,7 +25,7 @@ const Services = () => {
                   expectations—your health journey deserves nothing less.
                 </p>
                 <div class="text-center">
-                  <a href="#" class="more-btn">
+                  <a href="/" class="more-btn">
                     Learn More <i class="bx bx-chevron-right"></i>
                   </a>
                 </div>
@@ -35,14 +35,14 @@ const Services = () => {
               <div class="icon-boxes d-flex flex-column justify-content-center">
                 <div class="row">
                   <div class="col-xl-4 d-flex align-items-stretch">
-                    <div class="icon-box mt-4 mt-xl-0">
+                    <Link class="icon-box mt-4 mt-xl-0" to="/predictHeart">
                       <i class="bx bx-receipt"></i>
                       <h4>Predict your Health</h4>
                       <p>
                         Consequuntur sunt aut quasi enim aliquam quae harum
                         pariatur laboris nisi ut aliquip
                       </p>
-                    </div>
+                    </Link>
                   </div>
                   <div class="col-xl-4 d-flex align-items-stretch">
                     <Link class="icon-box mt-4 mt-xl-0 " to="/doctors">

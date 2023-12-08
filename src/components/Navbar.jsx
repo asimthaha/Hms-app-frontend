@@ -77,8 +77,8 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link class="nav-link scrollto" to="#contact">
-                  Contact
+                <Link class="nav-link scrollto" to="/bmi">
+                  Bmi Calculator
                 </Link>
               </li>
             </ul>
