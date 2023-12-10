@@ -40,7 +40,7 @@ const BmiCalc = () => {
             <div className="row">
               <div className="col">
                 <div className="row g-3">
-                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3">
                     <label htmlFor="" className="form-label">
                       Height (in centimeter*)
                     </label>
@@ -53,7 +53,7 @@ const BmiCalc = () => {
                       className="form-control"
                     />
                   </div>
-                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3">
                     <label htmlFor="" className="form-label">
                       Weight (in kilogram*)
                     </label>
@@ -74,7 +74,7 @@ const BmiCalc = () => {
                 </div>
               </div>
             </div>
-            {result === false ? (
+            {result == false ? (
               <p className="mt-3">Please provide input to check your bmi</p>
             ) : (
               <div className="row mt-3">

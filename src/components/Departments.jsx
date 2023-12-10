@@ -6,9 +6,9 @@ const Departments = () => {
     <div>
       <Navbar />
       <div className="mt-3">hi</div>
-      <section id="departments" class="departments container mt-5">
-        <div class="container">
-          <div class="section-title">
+      <section id="departments" className="departments container mt-5">
+        <div className="container">
+          <div className="section-title">
             <h2>Departments</h2>
             <p>
               Magnam dolores commodi suscipit. Necessitatibus eius consequatur
@@ -18,47 +18,47 @@ const Departments = () => {
             </p>
           </div>
 
-          <div class="row gy-4">
-            <div class="col-lg-3">
-              <ul class="nav nav-tabs flex-column">
-                <li class="nav-item">
+          <div className="row gy-4">
+            <div className="col-lg-3">
+              <ul className="nav nav-tabs flex-column">
+                <li className="nav-item">
                   <a
-                    class="nav-link active show"
+                    className="nav-link active show"
                     data-bs-toggle="tab"
                     href="#tab-1"
                   >
                     Cardiology
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                <li className="nav-item">
+                  <a className="nav-link" data-bs-toggle="tab" href="#tab-2">
                     Neurology
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                <li className="nav-item">
+                  <a className="nav-link" data-bs-toggle="tab" href="#tab-3">
                     Hepatology
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                <li className="nav-item">
+                  <a className="nav-link" data-bs-toggle="tab" href="#tab-4">
                     Pediatrics
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
+                <li className="nav-item">
+                  <a className="nav-link" data-bs-toggle="tab" href="#tab-5">
                     Eye Care
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-lg-9">
-              <div class="tab-content">
-                <div class="tab-pane active show" id="tab-1">
-                  <div class="row gy-4">
-                    <div class="col-lg-8 details order-2 order-lg-1">
+            <div className="col-lg-9">
+              <div className="tab-content">
+                <div className="tab-pane active show" id="tab-1">
+                  <div className="row gy-4">
+                    <div className="col-lg-8 details order-2 order-lg-1">
                       <h3>Cardiology</h3>
-                      <p class="fst-italic">
+                      <p className="fst-italic">
                         Qui laudantium consequatur laborum sit qui ad sapiente
                         dila parde sonata raqer a videna mareta paulona marka
                       </p>
@@ -70,20 +70,20 @@ const Departments = () => {
                         quaerat quos qui similique accusamus nostrum rem vero
                       </p>
                     </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="assets/img/departments-1.jpg"
                         alt=""
-                        class="img-fluid"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tab-2">
-                  <div class="row gy-4">
-                    <div class="col-lg-8 details order-2 order-lg-1">
+                <div className="tab-pane" id="tab-2">
+                  <div className="row gy-4">
+                    <div className="col-lg-8 details order-2 order-lg-1">
                       <h3>Et blanditiis nemo veritatis excepturi</h3>
-                      <p class="fst-italic">
+                      <p className="fst-italic">
                         Qui laudantium consequatur laborum sit qui ad sapiente
                         dila parde sonata raqer a videna mareta paulona marka
                       </p>
@@ -95,20 +95,20 @@ const Departments = () => {
                         pakto madirna desera vafle de nideran pal
                       </p>
                     </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="assets/img/departments-2.jpg"
                         alt=""
-                        class="img-fluid"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tab-3">
-                  <div class="row gy-4">
-                    <div class="col-lg-8 details order-2 order-lg-1">
+                <div className="tab-pane" id="tab-3">
+                  <div className="row gy-4">
+                    <div className="col-lg-8 details order-2 order-lg-1">
                       <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                      <p class="fst-italic">
+                      <p className="fst-italic">
                         Eos voluptatibus quo. Odio similique illum id quidem non
                         enim fuga. Qui natus non sunt dicta dolor et. In
                         asperiores velit quaerat perferendis aut
@@ -121,23 +121,23 @@ const Departments = () => {
                         ullam. Soluta et harum voluptatem optio quae
                       </p>
                     </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="assets/img/departments-3.jpg"
                         alt=""
-                        class="img-fluid"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tab-4">
-                  <div class="row gy-4">
-                    <div class="col-lg-8 details order-2 order-lg-1">
+                <div className="tab-pane" id="tab-4">
+                  <div className="row gy-4">
+                    <div className="col-lg-8 details order-2 order-lg-1">
                       <h3>
                         Fuga dolores inventore laboriosam ut est accusamus
                         laboriosam dolore
                       </h3>
-                      <p class="fst-italic">
+                      <p className="fst-italic">
                         Totam aperiam accusamus. Repellat consequuntur iure
                         voluptas iure porro quis delectus
                       </p>
@@ -149,22 +149,22 @@ const Departments = () => {
                         aperiam quia a laborum inventore
                       </p>
                     </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="assets/img/departments-4.jpg"
                         alt=""
-                        class="img-fluid"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tab-5">
-                  <div class="row gy-4">
-                    <div class="col-lg-8 details order-2 order-lg-1">
+                <div className="tab-pane" id="tab-5">
+                  <div className="row gy-4">
+                    <div className="col-lg-8 details order-2 order-lg-1">
                       <h3>
                         Est eveniet ipsam sindera pad rone matrelat sando reda
                       </h3>
-                      <p class="fst-italic">
+                      <p className="fst-italic">
                         Omnis blanditiis saepe eos autem qui sunt debitis porro
                         quia.
                       </p>
@@ -175,11 +175,11 @@ const Departments = () => {
                         sed est sint aut vitae molestiae voluptate vel
                       </p>
                     </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img
                         src="assets/img/departments-5.jpg"
                         alt=""
-                        class="img-fluid"
+                        className="img-fluid"
                       />
                     </div>
                   </div>

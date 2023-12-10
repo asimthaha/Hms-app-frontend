@@ -14,10 +14,16 @@ p {
   @apply mx-auto px-5;
 }
 .btn {
-  @apply text-white bg-blue-600 px-10 py-3 rounded-full duration-300;
+  @apply text-slate-50 bg-blue-500 px-10 py-3 rounded-full duration-300;
 }
 .btn:hover {
-  @apply bg-blue-500 text-white;
+  @apply bg-blue-400 text-white;
+}
+.button {
+  @apply text-slate-50 bg-green-500 px-10 py-3 rounded-full duration-300;
+}
+.button:hover {
+  @apply bg-green-400 text-white;
 }
 .sticky {
   @apply fixed bg-white shadow;

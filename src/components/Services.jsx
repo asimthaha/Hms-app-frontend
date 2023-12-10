@@ -6,11 +6,11 @@ const Services = () => {
   return (
     <>
       <Navbar />
-      <section id="why-us" class="why-us">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 d-flex align-items-stretch">
-              <div class="content">
+      <section id="why-us" className="why-us">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4 d-flex align-items-stretch">
+              <div className="content">
                 <h3>Why Choose Medilab?</h3>
                 <p className="text-white-50">
                   Opting for our hospital means choosing unparalleled healthcare
@@ -24,19 +24,19 @@ const Services = () => {
                   Trust us for personalized care that transcends
                   expectations—your health journey deserves nothing less.
                 </p>
-                <div class="text-center">
-                  <a href="/" class="more-btn">
-                    Learn More <i class="bx bx-chevron-right"></i>
+                <div className="text-center">
+                  <a href="/" className="more-btn">
+                    Learn More <i className="bx bx-chevron-right"></i>
                   </a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-8 d-flex align-items-stretch">
-              <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <Link class="icon-box mt-4 mt-xl-0" to="/predictHeart">
-                      <i class="bx bx-receipt"></i>
+            <div className="col-lg-8 d-flex align-items-stretch">
+              <div className="icon-boxes d-flex flex-column justify-content-center">
+                <div className="row">
+                  <div className="col-xl-4 d-flex align-items-stretch">
+                    <Link className="icon-box mt-4 mt-xl-0" to="/predictHeart">
+                      <i className="bx bx-receipt"></i>
                       <h4>Predict your Health</h4>
                       <p>
                         Consequuntur sunt aut quasi enim aliquam quae harum
@@ -44,9 +44,9 @@ const Services = () => {
                       </p>
                     </Link>
                   </div>
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <Link class="icon-box mt-4 mt-xl-0 " to="/doctors">
-                      <i class="bx bx-cube-alt"></i>
+                  <div className="col-xl-4 d-flex align-items-stretch">
+                    <Link className="icon-box mt-4 mt-xl-0 " to="/doctors">
+                      <i className="bx bx-cube-alt"></i>
                       <h4>Doctors</h4>
                       <p>
                         Excepteur sint occaecat cupidatat non proident, sunt in
@@ -54,9 +54,9 @@ const Services = () => {
                       </p>
                     </Link>
                   </div>
-                  <div class="col-xl-4 d-flex align-items-stretch">
-                    <Link class="icon-box mt-4 mt-xl-0" to="/departments">
-                      <i class="bx bx-images"></i>
+                  <div className="col-xl-4 d-flex align-items-stretch">
+                    <Link className="icon-box mt-4 mt-xl-0" to="/departments">
+                      <i className="bx bx-images"></i>
                       <h4>Departments</h4>
                       <p>
                         Aut suscipit aut cum nemo deleniti aut omnis. Doloribus

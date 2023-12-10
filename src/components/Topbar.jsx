@@ -3,25 +3,25 @@ import React from "react";
 const Topbar = () => {
   return (
     <>
-      <div id="topbar" class="d-flex align-items-center fixed-top">
-        <div class="container d-flex justify-content-between">
-          <div class="contact-info d-flex align-items-center">
-            <i class="bi bi-envelope"></i>{" "}
+      <div id="topbar" className="d-flex align-items-center fixed-top">
+        <div className="container d-flex justify-content-between">
+          <div className="contact-info d-flex align-items-center">
+            <i className="bi bi-envelope"></i>{" "}
             <a href="mailto:contact@example.com">medlab@gmail.com</a>
-            <i class="bi bi-phone"></i> +91 789 010 0000
+            <i className="bi bi-phone"></i> +91 789 010 0000
           </div>
-          <div class="d-none d-lg-flex social-links align-items-center">
-            <a href="#" class="twitter">
-              <i class="bi bi-twitter"></i>
+          <div className="d-none d-lg-flex social-links align-items-center">
+            <a href="#" className="twitter">
+              <i className="bi bi-twitter"></i>
             </a>
-            <a href="#" class="facebook">
-              <i class="bi bi-facebook"></i>
+            <a href="#" className="facebook">
+              <i className="bi bi-facebook"></i>
             </a>
-            <a href="#" class="instagram">
-              <i class="bi bi-instagram"></i>
+            <a href="#" className="instagram">
+              <i className="bi bi-instagram"></i>
             </a>
-            <a href="#" class="linkedin">
-              <i class="bi bi-linkedin"></i>
+            <a href="#" className="linkedin">
+              <i className="bi bi-linkedin"></i>
             </a>
           </div>
         </div>
