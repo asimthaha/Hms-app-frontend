@@ -86,7 +86,7 @@ const Navbar = () => {
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
 
-          <Link to="#appointment" className="appointment-btn scrollto">
+          <Link to="/login" className="appointment-btn scrollto">
             <span className="d-none d-md-inline">Sign in</span>
           </Link>
         </div>

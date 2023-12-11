@@ -7,12 +7,16 @@ import Departments from "./components/Departments";
 import Appoinment from "./components/Appoinment";
 import BmiCalc from "./components/BmiCalc";
 import HeartPredict from "./components/Predictions/HeartPredict";
+import Login from "./components/LoginRegister/Login";
+import Register from "./components/LoginRegister/Register";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="services" element={<Services />} />
         <Route path="doctors" element={<Doctors />} />
         <Route path="departments" element={<Departments />} />
