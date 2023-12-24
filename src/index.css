@@ -13,10 +13,10 @@ p {
 .container {
   @apply mx-auto px-5;
 }
-.btn {
+.buttn {
   @apply text-slate-50 bg-blue-500 px-10 py-3 rounded-full duration-300;
 }
-.btn:hover {
+.buttn:hover {
   @apply bg-blue-400 text-white;
 }
 .button {

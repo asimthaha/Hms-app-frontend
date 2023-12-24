@@ -60,8 +60,8 @@ const Navbar = () => {
             {sessionStorage.getItem("userid") ? (
               <p>{sessionStorage.getItem("name").toLocaleUpperCase()}</p>
             ) : (
-              <Link to="/login" className="appointment-btn scrollto">
-                <span className="d-none d-md-inline">Sign in</span>
+              <Link to="/login">
+                <span className="buttn">Sign in</span>
               </Link>
             )}
           </div>

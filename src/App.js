@@ -9,6 +9,7 @@ import HeartPredict from "./components/user_app/Predictions/HeartPredict";
 import Login from "./components/user_app//LoginRegister/Login";
 import Register from "./components/user_app//LoginRegister/Register";
 import StaffLogin from "./components/staff_app/StaffLogin";
+import DoctorHome from "./components/staff_app/doctors/DoctorHome";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="appoinments" element={<Appoinment />} />
         <Route path="predictHeart" element={<HeartPredict />} />
         <Route path="staffLogin" element={<StaffLogin />} />
+        <Route path="doc" element={<DoctorHome />} />
       </Routes>
     </BrowserRouter>
   );

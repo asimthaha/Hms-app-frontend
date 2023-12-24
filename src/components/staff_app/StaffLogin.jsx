@@ -17,20 +17,21 @@ const StaffLogin = () => {
     axios.post("http://127.0.0.1:8000/staff/", inputField).then((response) => {
       console.log(response.data);
       if (response.data.length > 0) {
-        const getUserId = response.data[0].userid;
+        console.log(response.data);
+        const getStaffId = response.data[0].staffid;
         const getName = response.data[0].name;
         const getPhoto = response.data[0].photo;
-        sessionStorage.setItem("userid", getUserId);
+        sessionStorage.setItem("staffid", getStaffId);
         sessionStorage.setItem("name", getName);
         sessionStorage.setItem("photo", getPhoto);
 
         const getRole = response.data[0].role;
         switch (getRole) {
           case "Doctor":
-            navigate("/");
+            navigate("/doc");
             break;
           case "Pharmacist":
-            navigate("/");
+            navigate("/pharm");
             break;
           case "LabAssistant":
             navigate("http://127.0.0.1:8000/");
@@ -120,7 +121,7 @@ const StaffLogin = () => {
                         </div>
                         <div className="pt-1 mb-4">
                           <button
-                            className="btn btn-lg btn-block"
+                            className="buttn btn-lg btn-block"
                             type="button"
                             onClick={readVal}
                           >
