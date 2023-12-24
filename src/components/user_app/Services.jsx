@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 
 const Services = () => {
@@ -55,9 +55,9 @@ const Services = () => {
                     </Link>
                   </div>
                   <div className="col-xl-4 d-flex align-items-stretch">
-                    <Link className="icon-box mt-4 mt-xl-0" to="/departments">
+                    <Link className="icon-box mt-4 mt-xl-0" to="/results">
                       <i className="bx bx-images"></i>
-                      <h4>Departments</h4>
+                      <h4>Results</h4>
                       <p>
                         Aut suscipit aut cum nemo deleniti aut omnis. Doloribus
                         ut maiores omnis facere

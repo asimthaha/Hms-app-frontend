@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import OffCanvas from "./OffCanvas";
@@ -38,6 +38,7 @@ const Doctors = () => {
           </div>
           <div className="flex flex-wrap justify-center">
             {data.map((value, index) => {
+              const linkUrl = `${value.id}`;
               return (
                 <div className="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 card-group">
                   <div className="card team-item">
@@ -45,10 +46,11 @@ const Doctors = () => {
                       <img
                         className="img-fluid"
                         src={"http://127.0.0.1:8000/" + value.photo}
-                        alt=" assets/img/doctors/doctors-3.jpg"
+                        alt="assets/img/doctors/doctors-3.jpg"
                       />
                       <div className="team-overlay">
                         <Link
+                          to={linkUrl}
                           className="btn hover:bg-green-400 text-white"
                           type="button"
                           data-bs-toggle="offcanvas"

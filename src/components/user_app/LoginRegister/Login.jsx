@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,14 +14,19 @@ const Login = () => {
 
   const readVal = () => {
     console.log(inputField);
-    if (
-      inputField.email == "admin@gmail.com" &&
-      inputField.password == "12345"
-    ) {
-      navigate("/add");
-    } else {
-      alert("invalid credentials");
-    }
+    axios.post("http://127.0.0.1:8000/user/", inputField).then((response) => {
+      console.log(response.data);
+      if (response.data.length > 0) {
+        const getUserId = response.data[0].userid;
+        const getName = response.data[0].name;
+
+        sessionStorage.setItem("userid", getUserId);
+        sessionStorage.setItem("name", getName);
+        navigate("/");
+      } else {
+        alert("invalid data");
+      }
+    });
   };
 
   const navigate = useNavigate();
@@ -55,14 +61,17 @@ const Login = () => {
                         </h5>
                         <div className="form-group was-validated">
                           <div className="form-outline mb-4">
-                            <label className="form-label" for="form2Example17">
+                            <label
+                              className="form-label"
+                              htmlFor="form2Example17"
+                            >
                               Username or email
                             </label>
                             <input
                               required
                               type="text"
                               className="form-control form-control-lg"
-                              name="username"
+                              name="email"
                               value={inputField.username}
                               onChange={inputHandler}
                             />
@@ -74,7 +83,10 @@ const Login = () => {
                         </div>
                         <div className="form-group was-validated">
                           <div className="form-outline mb-4">
-                            <label className="form-label" for="form2Example27">
+                            <label
+                              className="form-label"
+                              htmlFor="form2Example27"
+                            >
                               Password
                             </label>
                             <input

@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
             <Link className="navbar-brand" to="/">
-              Medlab
+              CARDIOCARE
             </Link>
           </h1>
           <Link to="/" className="logo me-auto">
@@ -24,16 +24,6 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link className="nav-link scrollto" to="/departments">
-                  Departments
-                </Link>
-              </li>
-              <li>
-                <Link className="nav-link scrollto" to="/doctors">
-                  Doctors
-                </Link>
-              </li>
               <li className="dropdown">
                 <Link to="#">
                   <span>Health Care</span>{" "}
@@ -41,54 +31,40 @@ const Navbar = () => {
                 </Link>
                 <ul>
                   <li>
-                    <Link to="#">Drop Down</Link>
-                  </li>
-                  <li className="dropdown">
-                    <Link to="#">
-                      <span>Predict Diseases</span>{" "}
-                      <i className="bi bi-chevron-right"></i>
-                    </Link>
-                    <ul>
-                      <li>
-                        <Link to="/predictHeart">Heart Disease</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 2</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 3</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 4</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 5</Link>
-                      </li>
-                    </ul>
+                    <Link to="/predictHeart">Heart Disease</Link>
                   </li>
                   <li>
                     <Link to="/bmi">Bmi Calculator</Link>
                   </li>
-                  <li>
-                    <Link to="#">Drop Down 3</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Drop Down 4</Link>
-                  </li>
                 </ul>
               </li>
               <li>
+                <Link className="nav-link scrollto" to="/doctors">
+                  Doctors
+                </Link>
+              </li>
+              <li>
                 <Link className="nav-link scrollto" to="#">
-                  Contact
+                  Results
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link scrollto" to="#">
+                  Medicines
                 </Link>
               </li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
-
-          <Link to="/login" className="appointment-btn scrollto">
-            <span className="d-none d-md-inline">Sign in</span>
-          </Link>
+          <div className="ml-2">
+            {sessionStorage.getItem("userid") ? (
+              <p>{sessionStorage.getItem("name").toLocaleUpperCase()}</p>
+            ) : (
+              <Link to="/login" className="appointment-btn scrollto">
+                <span className="d-none d-md-inline">Sign in</span>
+              </Link>
+            )}
+          </div>
         </div>
       </header>
     </>

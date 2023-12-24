@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [inputField, changeInputField] = useState({
     name: "",
-    image: "",
     email: "",
     password: "",
+    phone: "",
   });
+
+  const navigate = useNavigate();
 
   const inputHandler = (newEvent) => {
     changeInputField({
@@ -18,33 +20,43 @@ const Register = () => {
   };
 
   const readValue = () => {
-    console.log(inputField);
-    axios.post("http://127.0.0.1:8000/add/", inputField).then((response) => {
-      alert(response.data.status);
-    });
+    axios
+      .post("http://127.0.0.1:8000/user/register/", inputField)
+      .then((response) => {
+        if (response.data.status === "User data Added Successfully") {
+          navigate("/login");
+        } else {
+          alert("Provide correct data");
+        }
+      });
   };
 
   return (
     <div>
-      <section className="vh-100">
-        <div className="container h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
+      <section className="bg-slate-200">
+        <div className="container w-2/5">
+          <div className="row d-flex justify-content-center">
             <div className="col col-xl-10">
-              <div className="card border border-primary-subtle">
+              <div className="card border border-primary-subtle shadow">
                 <div className="d-flex justify-content-center m-3 pb-1">
                   <i className="fas fa-cubes fa-2x me-3 hover:text-sky-800"></i>
                   <span className="h1 fw-bold mb-0 text-blue-500">Medilab</span>
                 </div>
-                <form className="row g-3 needs-validation m-1">
-                  <div className="col col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                <form
+                  className="row g-3 needs-validation m-1"
+                  onSubmit={(ev) => {
+                    ev.preventDefault();
+                  }}
+                >
+                  <div className="col">
                     <div className="form-group was-validated">
-                      <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example17">
+                      <div className="form-outline">
+                        <label className="form-label" htmlFor="form2Example17">
                           Name
                         </label>
                         <input
                           required
-                          type="name"
+                          type="text"
                           className="form-control form-control-lg"
                           name="name"
                           value={inputField.name}
@@ -56,11 +68,9 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <div className="form-group was-validated">
-                      <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example17">
+                      <div className="form-outline">
+                        <label className="form-label" htmlFor="form2Example17">
                           Email
                         </label>
                         <input
@@ -77,11 +87,9 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <div className="form-group was-validated">
-                      <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example17">
+                      <div className="form-outline">
+                        <label className="form-label" htmlFor="form2Example17">
                           Password
                         </label>
                         <input
@@ -98,11 +106,9 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <div className="form-group was-validated">
-                      <div className="form-outline mb-4">
-                        <label className="form-label" for="form2Example17">
+                      <div className="form-outline">
+                        <label className="form-label" htmlFor="form2Example17">
                           Phone
                         </label>
                         <input
@@ -122,7 +128,9 @@ const Register = () => {
                     </div>
                   </div>
                   <div className="col col-12 col-md-12 col-lg-12 col-xxl-12 col-xl-12 d-flex justify-content-center">
-                    <button className="button">Register</button>
+                    <button className="button" onClick={readValue}>
+                      Register
+                    </button>
                   </div>
                   <div className="col col-12 col-md-12 col-lg-12 col-xxl-12 col-xl-12 d-flex justify-content-center">
                     <p className="mb-3">

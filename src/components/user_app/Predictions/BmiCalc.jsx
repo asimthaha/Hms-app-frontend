@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "../../Navbar";
 import axios from "axios";
 
 const BmiCalc = () => {
@@ -29,7 +29,7 @@ const BmiCalc = () => {
     <>
       <Navbar />
       <div className="mt-5">hi</div>
-      <section id="bmi" class="bmi container">
+      <section id="bmi" className="bmi container">
         <div className="container d-flex align-items-center flex-column">
           <div className="row">
             <div className="col text-center">
