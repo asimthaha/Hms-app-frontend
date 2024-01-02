@@ -1,7 +1,8 @@
 import React from "react";
 import Appoinment from "./Appoinment";
+import { Link } from "react-router-dom";
 
-const OffCanvas = () => {
+const OffCanvas = ({ doctorId }) => {
   return (
     <div>
       <div
@@ -14,16 +15,16 @@ const OffCanvas = () => {
           <h5 className="offcanvas-title" id="offcanvasExampleLabel">
             Book Appoinment
           </h5>
-          <a role="button">
+          <Link role="button">
             <i
-              class="bi bi-x-square"
+              className="bi bi-x-square"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></i>
-          </a>
+          </Link>
         </div>
         <div className="offcanvas-body">
-          <Appoinment />
+          <Appoinment doctorId={doctorId} />
         </div>
       </div>
     </div>

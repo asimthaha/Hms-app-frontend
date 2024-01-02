@@ -1,34 +1,63 @@
-import React, { useState } from "react";
-import Morning from "./Morning";
-import Evening from "./Evening";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { addDays, getDay } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import TimeBooking from "./TimeBooking";
 
-const Appoinment = () => {
+const Appoinment = ({ doctorId }) => {
+  const navigate = useNavigate();
+
   const [inputField, changeInputField] = useState({
     userid: sessionStorage.getItem("userid"),
-    doctorid: 2,
-    time: "11:30",
+    doctorid: 0,
+    time: "",
     date: "",
   });
 
-  const inputHandler = (date, event) => {
+  useEffect(() => {
+    changeInputField({
+      ...inputField,
+      doctorid: doctorId,
+    });
+  }, [doctorId]);
+
+  const handleDatePick = (date) => {
     setStartDate(date);
     changeInputField({
       ...inputField,
-      [event.target.name]: event.target.value,
+      date: new Date(date).toLocaleDateString(),
     });
   };
 
   const readvalue = () => {
     console.log(inputField);
+    axios
+      .post("http://127.0.0.1:8000/user/bookDoctor/", inputField)
+      .then((response) => {
+        alert(response.data.status);
+        navigate("/");
+      });
+  };
+
+  const appoinments = () => {
+    axios.get("http://127.0.0.1:8000/user/displayBooking/").then((response) => {
+      console.log(response.data);
+    });
   };
 
   const [startDate, setStartDate] = useState(null);
   const isWeekday = (date) => {
     const day = getDay(date);
     return day !== 0 && day !== 4;
+  };
+
+  const handleTimeChange = (timeItem) => {
+    changeInputField({
+      ...inputField,
+      time: timeItem.time,
+    });
   };
 
   return (
@@ -39,6 +68,7 @@ const Appoinment = () => {
             <form
               className="row card needs-validation bg-slate-100"
               id="appointment-form"
+              onPointerEnter={appoinments}
               onSubmit={(ev) => {
                 ev.preventDefault();
               }}
@@ -50,19 +80,22 @@ const Appoinment = () => {
                     value={inputField.name}
                     showIcon
                     selected={startDate}
-                    dateFormat="dd/MM"
-                    onChange={inputHandler}
+                    dateFormat="dd/MM/yyyy"
+                    onChange={handleDatePick}
                     minDate={new Date()}
                     maxDate={addDays(new Date(), 15)}
                     filterDate={isWeekday}
                     placeholderText="Select a date from today"
                   />
                 </div>
-                <Morning />
-                <Evening />
+                <TimeBooking handleTimeChange={handleTimeChange} />
               </div>
               <div className="col col-sm-12 colmd-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-center my-3">
-                <button type="submit" onClick={readvalue} className="button">
+                <button
+                  type="submit"
+                  onClick={readvalue}
+                  className="btn bg-blue-500 text-white"
+                >
                   Book Now
                 </button>
               </div>

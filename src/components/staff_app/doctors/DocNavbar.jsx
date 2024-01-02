@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Topbar from "../../Topbar";
 
 const DocNavbar = () => {
+  const photo = sessionStorage.getItem("photo");
+  const username = sessionStorage.getItem("username");
+
   return (
     <>
       <Topbar />
@@ -15,13 +18,11 @@ const DocNavbar = () => {
           </h1>
           <div className="row">
             <img
-              src={
-                "http://127.0.0.1:8000/media/" + sessionStorage.getItem("photo")
-              }
+              src={"http://127.0.0.1:8000/media/" + photo}
               alt="doctor thumbnail"
-              className="w-1 h-15 rounded-full col"
+              className="rounded-full col h-10 w-25"
             />
-            <p className="col">{sessionStorage.getItem("name")}</p>
+            <p className="col">{username}</p>
           </div>
           <Link to="/doc" className="logo me-auto">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
@@ -35,7 +36,7 @@ const DocNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/doc">
+                <Link className="nav-link scrollto" to="/ViewAppoinments">
                   Appoinments
                 </Link>
               </li>

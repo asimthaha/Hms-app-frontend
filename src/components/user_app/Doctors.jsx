@@ -11,10 +11,11 @@ const Doctors = () => {
     axios
       .post("http://127.0.0.1:8000/staff/displayDoctor/")
       .then((response) => {
-        console.log(response.data);
         changeData(response.data);
       });
   };
+
+  const [dId, setDoctorId] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -40,7 +41,10 @@ const Doctors = () => {
             {data.map((value, index) => {
               const linkUrl = `${value.id}`;
               return (
-                <div className="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 card-group">
+                <div
+                  key={`doctor_${index}`}
+                  className="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 card-group"
+                >
                   <div className="card team-item">
                     <div className="team-img relative d-flex justify-content-center flex-column">
                       <img
@@ -51,7 +55,11 @@ const Doctors = () => {
                       <div className="team-overlay">
                         <Link
                           to={linkUrl}
-                          className="btn hover:bg-green-400 text-white"
+                          onClick={(ev) => {
+                            ev.preventDefault();
+                            setDoctorId(value.staffid);
+                          }}
+                          className="btn bg-blue-500 hover:bg-green-400 text-white"
                           type="button"
                           data-bs-toggle="offcanvas"
                           data-bs-target="#offcanvasExample"
@@ -77,7 +85,7 @@ const Doctors = () => {
               );
             })}
           </div>
-          <OffCanvas />
+          <OffCanvas doctorId={dId} />
         </div>
       </section>
     </>

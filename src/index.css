@@ -14,7 +14,7 @@ p {
   @apply mx-auto px-5;
 }
 .buttn {
-  @apply text-slate-50 bg-blue-500 px-10 py-3 rounded-full duration-300;
+  @apply text-slate-50 bg-blue-500 px-10 py-2 rounded-full duration-300;
 }
 .buttn:hover {
   @apply bg-blue-400 text-white;

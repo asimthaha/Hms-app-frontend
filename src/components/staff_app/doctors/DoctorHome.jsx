@@ -3,6 +3,7 @@ import DocNavbar from "./DocNavbar";
 import { Link } from "react-router-dom";
 
 const DoctorHome = () => {
+  const username = sessionStorage.getItem("username");
   const [isLoading, changeLoading] = useState(true);
 
   useEffect(() => {
@@ -20,13 +21,7 @@ const DoctorHome = () => {
         <>
           <section id="hero" className="d-flex align-items-center">
             <div className="container">
-              {sessionStorage.getItem("name") ? (
-                <h2>
-                  HEY {sessionStorage.getItem("name").toLocaleUpperCase()}
-                </h2>
-              ) : (
-                <p></p>
-              )}
+              {username ? <h2>HEY {username.toLocaleUpperCase()}</h2> : <p></p>}
               <h1>Welcome to CardioCare</h1>
               <h2>Helping People is what we do</h2>
               <a href="#about" className="btn-get-started scrollto">

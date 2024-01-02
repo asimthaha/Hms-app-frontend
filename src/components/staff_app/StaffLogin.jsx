@@ -19,13 +19,16 @@ const StaffLogin = () => {
       if (response.data.length > 0) {
         console.log(response.data);
         const getStaffId = response.data[0].staffid;
-        const getName = response.data[0].name;
+        const getUserName = response.data[0].username;
         const getPhoto = response.data[0].photo;
-        sessionStorage.setItem("staffid", getStaffId);
-        sessionStorage.setItem("name", getName);
-        sessionStorage.setItem("photo", getPhoto);
-
+        const getName = response.data[0].name;
         const getRole = response.data[0].role;
+        sessionStorage.setItem("staffid", getStaffId);
+        sessionStorage.setItem("username", getUserName);
+        sessionStorage.setItem("photo", getPhoto);
+        sessionStorage.setItem("name", getName);
+        sessionStorage.setItem("role", getRole);
+
         switch (getRole) {
           case "Doctor":
             navigate("/doc");

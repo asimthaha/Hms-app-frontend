@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Topbar = () => {
+  const role = sessionStorage.getItem("role");
+  const name = sessionStorage.getItem("name");
+
   return (
     <>
       <div id="topbar" className="d-flex align-items-center fixed-top">
@@ -26,13 +29,17 @@ const Topbar = () => {
             </Link>
           </div>
           <div className="">
-            {sessionStorage.getItem("name") ? (
+            {name ? (
               <Link
-                to="/login"
-                onClick={sessionStorage.clear()}
+                to={role ? "/staffLogin" : "/login"}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  ev.preventDefault();
+                  sessionStorage.clear();
+                }}
                 className="buttn"
               >
-                Sign out
+                LOGOUT
               </Link>
             ) : (
               <p></p>
