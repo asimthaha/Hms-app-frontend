@@ -26,8 +26,8 @@ function App() {
 
         <Route path="staffLogin" element={<StaffLogin />} />
         <Route path="doc" element={<DoctorHome />} />
-        <Route path="ViewAppoinments" element={<DocViewAppoinment />} />
-        <Route path="ViewPatients" element={<ViewPatients />} />
+        <Route path="viewAppoinments" element={<DocViewAppoinment />} />
+        <Route path="viewPatients" element={<ViewPatients />} />
       </Routes>
     </BrowserRouter>
   );

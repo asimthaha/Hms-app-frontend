@@ -4,12 +4,20 @@ import axios from "axios";
 
 const DocViewAppoinment = () => {
   const [appoinmentData, setAppoinmentData] = useState([
-    { time: "", date: "", userid: "", doctorid: "" },
+    {
+      time: "",
+      date: "",
+      username: "",
+      doctorid: "",
+      bookingid: "",
+      user: { name: "" },
+    },
   ]);
 
   const fetchData = () => {
     axios.get("http://127.0.0.1:8000/user/displayBooking/").then((response) => {
       setAppoinmentData(response.data);
+      console.log(response.data);
     });
   };
 
@@ -21,6 +29,7 @@ const DocViewAppoinment = () => {
     <div>
       <DocNavbar />
       <div className="mt-5">hi</div>
+      <div className="mt-4">hi</div>
       <div className="text-center mt-5">
         <h2
           className="mb-12 section-heading wow fadeInDown"
@@ -34,23 +43,31 @@ const DocViewAppoinment = () => {
           <div className="col">
             <div className="row">
               <div className="col">
-                <table class="table table-bordered table-sm">
+                <table className="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th scope="col">Name</th>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
-                      <th scope="col">Accept</th>
+                      <th className="d-flex justify-content-center" scope="col">
+                        Accept
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {appoinmentData.map((value, index) => {
                       return (
-                        <tr>
-                          <th scope="row">{value.name}</th>
+                        <tr key={`booking_${index}`}>
+                          <th scope="row">{value.user.name}</th>
                           <td>{value.date}</td>
                           <td>{value.time}</td>
-                          <td>
+                          <td className="d-flex justify-content-center">
+                            <button
+                              className="btn btn-outline-success mr-2"
+                              type="button"
+                            >
+                              Accept
+                            </button>
                             <button
                               className="btn btn-outline-danger"
                               type="button"

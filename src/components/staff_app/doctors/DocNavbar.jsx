@@ -3,32 +3,35 @@ import { Link } from "react-router-dom";
 import Topbar from "../../Topbar";
 
 const DocNavbar = () => {
-  const photo = sessionStorage.getItem("photo");
-  const username = sessionStorage.getItem("username");
-
   return (
     <>
       <Topbar />
       <header id="header" className="fixed-top">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
             <Link className="navbar-brand" to="/">
               CARDIOCARE
             </Link>
           </h1>
-          <div className="row">
-            <img
-              src={"http://127.0.0.1:8000/media/" + photo}
-              alt="doctor thumbnail"
-              className="rounded-full col h-10 w-25"
-            />
-            <p className="col">{username}</p>
-          </div>
           <Link to="/doc" className="logo me-auto">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
-          <nav id="navbar" className="navbar order-last order-lg-0">
+          <nav
+            id="navbarTogglerDemo02"
+            className="navbar order-last order-lg-0"
+          >
             <ul>
               <li>
                 <Link className="nav-link scrollto active" to="/doc">
@@ -36,27 +39,16 @@ const DocNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/ViewAppoinments">
+                <Link className="nav-link scrollto" to="/viewAppoinments">
                   Appoinments
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto mr-2" to="#">
+                <Link className="nav-link scrollto mr-2" to="/viewPatients">
                   Patients
                 </Link>
               </li>
             </ul>
-            <form className="form-inline row">
-              <input
-                className="form-control col ml-3 mr-1 text-sm w-40"
-                type="search"
-                placeholder="Search Patients"
-              />
-              <button className="btn btn-outline-success col" type="submit">
-                Search
-              </button>
-            </form>
-            <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
         </div>
       </header>
