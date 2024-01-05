@@ -133,7 +133,9 @@ const StaffLogin = () => {
                         </div>
                         <p className="mb-5 pb-lg-2">
                           Don't have an account?{" "}
-                          <Link to="/register">Register here</Link>
+                          <Link className="text-primary" to="/register">
+                            Register here
+                          </Link>
                         </p>
                       </form>
                     </div>

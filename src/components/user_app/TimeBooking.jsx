@@ -76,7 +76,7 @@ const TimeBooking = ({ handleTimeChange }) => {
                   id={time.id}
                 />
                 <label
-                  className="form-check-label btn border-blue-500 m-1"
+                  className="form-check-label btn border-green-300 m-1"
                   htmlFor={time.id}
                 >
                   {time.time}

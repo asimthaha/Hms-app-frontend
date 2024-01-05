@@ -18,17 +18,21 @@ const Topbar = () => {
           </div>
           <div className="d-flex align-items-center">
             <div className="row">
-              <img
-                src={"http://127.0.0.1:8000/media/" + photo}
-                alt="doctor thumbnail"
-                className="rounded-full col h-10 w-25"
-              />
+              {photo ? (
+                <img
+                  src={"http://127.0.0.1:8000/media/" + photo}
+                  alt="doctor thumbnail"
+                  className="rounded-full col h-10 w-25"
+                />
+              ) : (
+                <p></p>
+              )}
               <p className="col d-flex align-items-center">{username}</p>
             </div>
             <div className="ml-2">
               {name ? (
                 <Link
-                  to={role === "" ? "/login" : "/staffLogin"}
+                  to={"/login"}
                   onClick={(ev) => {
                     ev.stopPropagation();
                     ev.preventDefault();

@@ -3,26 +3,30 @@ import DocNavbar from "./DocNavbar";
 import axios from "axios";
 
 const DocViewAppoinment = () => {
-  const [appoinmentData, setAppoinmentData] = useState([
-    {
-      time: "",
-      date: "",
-      username: "",
-      doctorid: "",
-      bookingid: "",
-      user: { name: "" },
-    },
-  ]);
+  const [inputData, setInputData] = useState({
+    doctorid: sessionStorage.getItem("staffid"),
+  });
 
-  const fetchData = () => {
-    axios.get("http://127.0.0.1:8000/user/displayBooking/").then((response) => {
-      setAppoinmentData(response.data);
-      console.log(response.data);
+  const [appoinmentData, setAppoinmentData] = useState([]);
+
+  const inputHandler = (newEvent) => {
+    setInputData({
+      ...inputData,
+      [newEvent.target.name]: newEvent.target.value,
     });
   };
 
+  const readValue = () => {
+    axios
+      .post("http://127.0.0.1:8000/staff/appoinmentViewDoctor/", inputData)
+      .then((response) => {
+        setAppoinmentData(response.data);
+        console.log(response.data);
+      });
+  };
+
   useEffect(() => {
-    fetchData();
+    readValue();
   }, []);
 
   return (

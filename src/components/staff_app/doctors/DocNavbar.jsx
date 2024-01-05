@@ -20,7 +20,7 @@ const DocNavbar = () => {
         </button>
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/doc">
               CARDIOCARE
             </Link>
           </h1>

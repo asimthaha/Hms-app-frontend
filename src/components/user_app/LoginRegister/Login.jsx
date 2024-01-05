@@ -33,6 +33,13 @@ const Login = () => {
 
   return (
     <>
+      <div class="d-flex justify-content-end admin">
+        <span>
+          <Link to={"http://127.0.0.1:8000/admin/"}>
+            <i class="bi bi-person-fill-lock opacity-50 m-5 p-5"></i>
+          </Link>
+        </span>
+      </div>
       <section className="vh-100">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -105,16 +112,24 @@ const Login = () => {
                         </div>
                         <div className="pt-1 mb-4">
                           <button
-                            className="btn btn-lg btn-block"
+                            className="buttn btn-lg btn-block"
                             type="button"
                             onClick={readVal}
                           >
                             Login
                           </button>
                         </div>
-                        <p className="mb-5 pb-lg-2">
+                        <p className="mb-2 pb-lg-2">
                           Don't have an account?{" "}
-                          <Link to="/register">Register here</Link>
+                          <Link className="text-primary" to="/register">
+                            Register here
+                          </Link>
+                        </p>
+                        <p className="mb-5 pb-lg-2">
+                          Staff Login{" "}
+                          <Link className="text-primary" to="/staffLogin">
+                            here
+                          </Link>
                         </p>
                       </form>
                     </div>
