@@ -31,8 +31,11 @@ const Appoinment = ({ doctorId }) => {
     });
   };
 
+  useEffect(() => {
+    disableAppoinments();
+  }, [inputField.date]);
+
   const readvalue = () => {
-    console.log(inputField);
     axios
       .post("http://127.0.0.1:8000/user/bookDoctor/", inputField)
       .then((response) => {
@@ -41,10 +44,13 @@ const Appoinment = ({ doctorId }) => {
       });
   };
 
-  const appoinments = () => {
-    axios.get("http://127.0.0.1:8000/user/displayBooking/").then((response) => {
-      console.log(response.data);
-    });
+  const disableAppoinments = () => {
+    console.log(inputField);
+    axios
+      .post("http://127.0.0.1:8000/user/disableAppoinments/", inputField)
+      .then((response) => {
+        console.log(response.data);
+      });
   };
 
   const [startDate, setStartDate] = useState(null);
@@ -68,7 +74,6 @@ const Appoinment = ({ doctorId }) => {
             <form
               className="row card needs-validation bg-slate-100"
               id="appointment-form"
-              onPointerEnter={appoinments}
               onSubmit={(ev) => {
                 ev.preventDefault();
               }}

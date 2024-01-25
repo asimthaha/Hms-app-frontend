@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [inputField, setInputField] = useState({
-    email: "",
-    password: "",
+    email: "iamasimthaha@gmail.com",
+    password: "1234",
   });
 
   const inputHandler = (event) => {
@@ -33,10 +33,10 @@ const Login = () => {
 
   return (
     <>
-      <div class="d-flex justify-content-end admin">
+      <div className="d-flex justify-content-end admin">
         <span>
           <Link to={"http://127.0.0.1:8000/admin/"}>
-            <i class="bi bi-person-fill-lock opacity-50 m-5 p-5"></i>
+            <i className="bi bi-person-fill-lock opacity-50 m-5 p-5"></i>
           </Link>
         </span>
       </div>
@@ -79,7 +79,7 @@ const Login = () => {
                               type="text"
                               className="form-control form-control-lg"
                               name="email"
-                              value={inputField.username}
+                              value={inputField.email}
                               onChange={inputHandler}
                             />
                             <div className="valid-feedback">Looks good!</div>

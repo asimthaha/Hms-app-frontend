@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Topbar = () => {
+  const navigate = useNavigate();
+
   const role = sessionStorage.getItem("role");
   const name = sessionStorage.getItem("name");
   const photo = sessionStorage.getItem("photo");
@@ -32,11 +34,11 @@ const Topbar = () => {
             <div className="ml-2">
               {name ? (
                 <Link
-                  to={"/login"}
                   onClick={(ev) => {
                     ev.stopPropagation();
                     ev.preventDefault();
                     sessionStorage.clear();
+                    navigate(role ? "/staffLogin" : "/login");
                   }}
                   className="buttn"
                 >

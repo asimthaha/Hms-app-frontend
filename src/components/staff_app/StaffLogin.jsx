@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const StaffLogin = () => {
   const [inputField, setInputField] = useState({
-    username: "",
-    password: "",
+    username: "asimthaha",
+    password: "1234",
   });
 
   const inputHandler = (event) => {
@@ -34,7 +34,7 @@ const StaffLogin = () => {
             navigate("/doc");
             break;
           case "Pharmacist":
-            navigate("/pharm");
+            navigate("/pharmacist");
             break;
           case "LabAssistant":
             navigate("http://127.0.0.1:8000/");

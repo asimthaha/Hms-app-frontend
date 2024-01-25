@@ -49,7 +49,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="#">
+                <Link className="nav-link scrollto" to="/medicines">
                   Medicines
                 </Link>
               </li>

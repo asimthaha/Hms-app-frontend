@@ -11,6 +11,10 @@ import StaffLogin from "./components/staff_app/StaffLogin";
 import DoctorHome from "./components/staff_app/doctors/DoctorHome";
 import DocViewAppoinment from "./components/staff_app/doctors/DocViewAppoinment";
 import ViewPatients from "./components/staff_app/doctors/ViewPatients";
+import PharmHome from "./components/staff_app/pharmacist/PharmHome";
+import PharmMeds from "./components/staff_app/pharmacist/PharmMeds";
+import PharmPay from "./components/staff_app/pharmacist/PharmPay";
+import Medicines from "./components/user_app/Medicines";
 
 function App() {
   return (
@@ -23,11 +27,16 @@ function App() {
         <Route path="doctors" element={<Doctors />} />
         <Route path="predictHeart" element={<HeartPredict />} />
         <Route path="bmi" element={<BmiCalc />} />
+        <Route path="medicines" element={<Medicines />} />
 
         <Route path="staffLogin" element={<StaffLogin />} />
         <Route path="doc" element={<DoctorHome />} />
         <Route path="viewAppoinments" element={<DocViewAppoinment />} />
         <Route path="viewPatients" element={<ViewPatients />} />
+
+        <Route path="pharmacist" element={<PharmHome />} />
+        <Route path="meds" element={<PharmMeds />} />
+        <Route path="payments" element={<PharmPay />} />
       </Routes>
     </BrowserRouter>
   );

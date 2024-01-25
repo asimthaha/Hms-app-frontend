@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import DocNavbar from "./DocNavbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Modal from "./Modal";
 
 const ViewPatients = () => {
   const [inputField, changeInputField] = useState({
-    name: "",
+    name: "asim",
   });
 
   const [patientData, setPatientData] = useState([
@@ -13,42 +14,59 @@ const ViewPatients = () => {
     //   userid: 1,
     //   bookings: [
     //     {
+    //       bookingid: 1,
     //       doctor: {
-    //         name: "",
+    //         name: "Devnand Nair",
     //       },
-    //       time: "",
-    //       date: "",
+    //       time: "11:00 PM",
+    //       date: "1/17/2024",
+    //       userid: 1,
+    //       doctorid: 1,
     //     },
     //   ],
     //   results: [
     //     {
-    //       testDate: "",
-    //       ecgpwave: "",
-    //       heartRate: "",
-    //       bloodGroup: "",
-    //       bloodPressure: "",
-    //       oxygenSaturation: "",
-    //       cholesterol: "",
-    //       hdlcholesterol: "",
-    //       ldlcholesterol: "",
+    //       resultid: 1,
+    //       testDate: "2024-01-04",
+    //       ecgpwave: "120",
+    //       heartRate: "100",
+    //       bloodGroup: "A+",
+    //       bloodPressure: "120/80",
+    //       oxygenSaturation: "0.95",
+    //       cholesterol: 200,
+    //       hdlcholesterol: 60,
+    //       ldlcholesterol: 100,
     //     },
     //   ],
     //   medicines: [
     //     {
-    //       inferences: "",
-    //       date: "",
-    //       med1: "",
-    //       times1: "",
-    //       days1: "",
-    //       med2: null,
-    //       times2: null,
-    //       days2: null,
+    //       medicineid: 24,
+    //       inferences: "chest pain",
+    //       date: "2024-01-12",
+    //       medicines_data: [
+    //         {
+    //           meds: "paracetamol",
+    //           times: "3 times",
+    //           days: "5 days",
+    //         },
+    //         {
+    //           meds: "paracetamol",
+    //           times: "3 times",
+    //           days: "5 days",
+    //         },
+    //       ],
+    //       userid: 1,
+    //       doctorid: 1,
     //     },
     //   ],
-    //   name: "",
-    //   email: "",
+    //   name: "ASIM THAHA AZEEZ",
+    //   email: "iamasimthaha@gmail.com",
+    //   password: "1234",
+    //   phone: 8281616294,
     // },
   ]);
+
+  const [uid, setUserId] = useState(0);
 
   const inputHandler = (event) => {
     changeInputField({
@@ -66,6 +84,10 @@ const ViewPatients = () => {
         console.log(response.data);
       });
   };
+
+  useEffect(() => {
+    setUserId();
+  }, []);
 
   return (
     <>
@@ -205,8 +227,19 @@ const ViewPatients = () => {
                                         <th scope="row">{meds.date}</th>
                                         <td>{meds.inferences}</td>
                                         <td>
-                                          {meds.med1}, {meds.times1},{" "}
-                                          {meds.days1}
+                                          {meds.medicines_data.map(
+                                            (meds_data, index) => {
+                                              return (
+                                                <div key={`meds_data_${index}`}>
+                                                  <p>
+                                                    {meds_data.meds},{" "}
+                                                    {meds_data.times} times,{" "}
+                                                    {meds_data.days} days
+                                                  </p>
+                                                </div>
+                                              );
+                                            }
+                                          )}
                                         </td>
                                       </tr>
                                     );
@@ -292,39 +325,22 @@ const ViewPatients = () => {
                             </div>
                           </div>
                         </div>
-                        <button
-                          className="carousel-control-prev"
-                          type="button"
-                          data-bs-target="#carouselControls"
-                          data-bs-slide="prev"
-                        >
-                          <span
-                            className="carousel-control-prev-icon"
-                            aria-hidden="true"
-                          ></span>
-                          <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                          className="carousel-control-next"
-                          type="button"
-                          data-bs-target="#carouselControls"
-                          data-bs-slide="next"
-                        >
-                          <span
-                            className="carousel-control-next-icon"
-                            aria-hidden="true"
-                          ></span>
-                          <span className="visually-hidden">Next</span>
-                        </button>
                       </div>
                       <div className="card-footer bg-transparent">
                         <button
+                          onClick={(ev) => {
+                            ev.preventDefault();
+                            setUserId(value.userid);
+                          }}
                           type="button"
                           className="btn btn-outline-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
                         >
                           Add Medicine
                         </button>
                       </div>
+                      <Modal userId={uid} />
                     </div>
                   </div>
                 </div>
