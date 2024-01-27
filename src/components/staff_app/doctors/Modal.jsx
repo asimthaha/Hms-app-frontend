@@ -14,6 +14,7 @@ const Modal = ({ userId }) => {
     { meds: "", times: "", days: "" },
   ]);
 
+  const [inference, setInference] = useState("");
   useEffect(() => {
     setData({
       ...data,
@@ -25,7 +26,6 @@ const Modal = ({ userId }) => {
     const data = [...formField];
     data[index][event.target.name] = event.target.value;
     setFormField(data);
-    // setData(data);
   };
 
   const addFields = () => {
@@ -37,29 +37,23 @@ const Modal = ({ userId }) => {
     setFormField([...formField, object]);
   };
 
-  const removeFields = (index) => {
+  const removeFields = () => {
     const data = [...formField];
-    data.splice(index, 1);
+    data.splice(formField.length - 1, 1);
     setFormField(data);
   };
 
-  useEffect(() => {
-    if (data.medicines_data.length > 0) {
-      console.log("Submitting");
-    }
-  }, [data.medicines_data]);
-
   const addMedicine = () => {
-    setData({
+    const param = {
       ...data,
       medicines_data: [...formField],
-    });
-    console.log(data);
-    // axios
-    //   .post("http://127.0.0.1:8000/staff/addMedicineDoctor/", data)
-    //   .then((response) => {
-    //     alert(response.data.status);
-    //   });
+      inferences: inference,
+    };
+    axios
+      .post("http://127.0.0.1:8000/staff/addMedicineDoctor/", param)
+      .then((response) => {
+        alert(response.data.status);
+      });
   };
 
   return (
@@ -90,9 +84,10 @@ const Modal = ({ userId }) => {
                     required
                     name="inferences"
                     id=""
+                    onChange={(ev) => setInference(ev.target.value)}
                     rows="3"
                     className="form-control mb-1"
-                    value={data.inferences}
+                    value={inference}
                   ></textarea>
                 </div>
                 {formField.map((forms, index) => {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Navbar from "../../Navbar";
 
 const HeartPredict = () => {
   const [result, setResult] = useState([]);
@@ -38,16 +39,22 @@ const HeartPredict = () => {
 
   return (
     <>
+      <Navbar />
+      <div className="mt-5">hi</div>
+      <div className="mt-4">hi</div>
       <div
         id="heartPredict"
         className="container d-flex align-items-center flex-column m-3"
       >
-        <div className="row">
-          <div className="col">
-            <h1>Heart Disease Prediction</h1>
-          </div>
+        <div className="mt-5 text-center">
+          <h2
+            className="mb-12 section-heading wow fadeInDown"
+            data-wow-delay="0.3s"
+          >
+            Heart Disease Prediction
+          </h2>
         </div>
-        <div className="row">
+        <div className="row w-3/4">
           <div className="col card p-3">
             <form className="row g-3 needs-validation">
               <div className="form-group was-validated col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -350,7 +357,11 @@ const HeartPredict = () => {
                 </div>
               </div>
               <div className="form-group was-validated col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-center">
-                <button onClick={readValue} type="submit" className="btn">
+                <button
+                  onClick={readValue}
+                  type="submit"
+                  className="btn btn-outline-primary"
+                >
                   Predict
                 </button>
               </div>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const StaffLogin = () => {
   const [inputField, setInputField] = useState({
-    username: "asimthaha",
+    username: "devnand",
     password: "1234",
   });
 
@@ -31,7 +31,7 @@ const StaffLogin = () => {
 
         switch (getRole) {
           case "Doctor":
-            navigate("/doc");
+            navigate("/doctor");
             break;
           case "Pharmacist":
             navigate("/pharmacist");

@@ -1,18 +1,18 @@
 import React from "react";
 
-const TimeBooking = ({ handleTimeChange }) => {
+const TimeBooking = ({ handleTimeChange, availableTimes }) => {
   const timeArr = [
     {
       id: "mng-1",
-      time: "10:30 PM",
+      time: "10:30 AM",
     },
     {
       id: "mng-2",
-      time: "11:00 PM",
+      time: "11:00 AM",
     },
     {
       id: "mng-3",
-      time: "11:30 PM",
+      time: "11:30 AM",
     },
     {
       id: "mng-4",
@@ -42,14 +42,6 @@ const TimeBooking = ({ handleTimeChange }) => {
       id: "evng-4",
       time: "04:00 PM",
     },
-    {
-      id: "evng-5",
-      time: "04:30 PM",
-    },
-    {
-      id: "evng-6",
-      time: "05:00 PM",
-    },
   ];
 
   return (
@@ -60,6 +52,9 @@ const TimeBooking = ({ handleTimeChange }) => {
         </div>
         <div className="row form-group was-validated">
           {timeArr.map((time, timeIndex) => {
+            const isTimeAvailable = availableTimes?.filter(
+              (avTime) => avTime.time === time.time
+            );
             return (
               <div key={`time_${timeIndex}`} className="col-6 form-check">
                 <input
@@ -71,12 +66,15 @@ const TimeBooking = ({ handleTimeChange }) => {
                   }}
                   required
                   name="time"
+                  disabled={isTimeAvailable.length > 0}
                   type="radio"
-                  className="btn-check form-check-input"
+                  className={`btn-check form-check-input`}
                   id={time.id}
                 />
                 <label
-                  className="form-check-label btn border-green-400 m-1"
+                  className={`form-check-label btn m-2 ${
+                    isTimeAvailable.length > 0 ? "btn-secondary" : "bg-blue-300"
+                  }`}
                   htmlFor={time.id}
                 >
                   {time.time}

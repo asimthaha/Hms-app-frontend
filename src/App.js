@@ -15,28 +15,31 @@ import PharmHome from "./components/staff_app/pharmacist/PharmHome";
 import PharmMeds from "./components/staff_app/pharmacist/PharmMeds";
 import PharmPay from "./components/staff_app/pharmacist/PharmPay";
 import Medicines from "./components/user_app/Medicines";
+import Results from "./components/user_app/Results";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Home />} />
+
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="services" element={<Services />} />
-        <Route path="doctors" element={<Doctors />} />
-        <Route path="predictHeart" element={<HeartPredict />} />
-        <Route path="bmi" element={<BmiCalc />} />
-        <Route path="medicines" element={<Medicines />} />
+        <Route path="user/services" element={<Services />} />
+        <Route path="user/doctors" element={<Doctors />} />
+        <Route path="user/predictHeart" element={<HeartPredict />} />
+        <Route path="user/bmi" element={<BmiCalc />} />
+        <Route path="user/medicines" element={<Medicines />} />
+        <Route path="user/results" element={<Results />} />
 
         <Route path="staffLogin" element={<StaffLogin />} />
-        <Route path="doc" element={<DoctorHome />} />
-        <Route path="viewAppoinments" element={<DocViewAppoinment />} />
-        <Route path="viewPatients" element={<ViewPatients />} />
+        <Route path="doctor" element={<DoctorHome />} />
+        <Route path="doctor/viewAppoinments" element={<DocViewAppoinment />} />
+        <Route path="doctor/viewPatients" element={<ViewPatients />} />
 
         <Route path="pharmacist" element={<PharmHome />} />
-        <Route path="meds" element={<PharmMeds />} />
-        <Route path="payments" element={<PharmPay />} />
+        <Route path="pharmacist/medicines" element={<PharmMeds />} />
+        <Route path="pharmacist/payments" element={<PharmPay />} />
       </Routes>
     </BrowserRouter>
   );

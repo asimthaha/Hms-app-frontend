@@ -19,11 +19,6 @@ const Navbar = () => {
 
           <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
-              <li>
-                <Link className="nav-link scrollto active" to="/">
-                  Home
-                </Link>
-              </li>
               <li className="dropdown">
                 <Link to="#">
                   <span>Health Care</span>{" "}
@@ -31,31 +26,37 @@ const Navbar = () => {
                 </Link>
                 <ul>
                   <li>
-                    <Link to="/predictHeart">Heart Disease</Link>
+                    <Link to="/user/predictHeart">Heart Disease</Link>
                   </li>
                   <li>
-                    <Link to="/bmi">Bmi Calculator</Link>
+                    <Link to="/user/bmi">Bmi Calculator</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/doctors">
+                <Link className="nav-link scrollto" to="/user/doctors">
                   Doctors
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="#">
+                <Link className="nav-link scrollto" to="/user/results">
                   Results
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/medicines">
+                <Link className="nav-link scrollto" to="/user/medicines">
                   Medicines
                 </Link>
               </li>
             </ul>
-            <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
+          <button type="button" class="btn position-relative">
+            <i class="bi bi-bell-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3+
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
           <div className="ml-2">
             {sessionStorage.getItem("userid") ? (
               <p>{sessionStorage.getItem("name").toLocaleUpperCase()}</p>

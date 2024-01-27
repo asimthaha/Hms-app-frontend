@@ -2,21 +2,18 @@ import React, { useEffect, useState } from "react";
 import DocNavbar from "./DocNavbar";
 import axios from "axios";
 
+export const DocStatus = {
+  Accept: "Accept",
+  Decline: "Decline",
+};
+
 const DocViewAppoinment = () => {
   const [inputData, setInputData] = useState({
     doctorid: sessionStorage.getItem("staffid"),
   });
-
   const [appoinmentData, setAppoinmentData] = useState([]);
 
-  const inputHandler = (newEvent) => {
-    setInputData({
-      ...inputData,
-      [newEvent.target.name]: newEvent.target.value,
-    });
-  };
-
-  const readValue = () => {
+  const getAppointments = () => {
     axios
       .post("http://127.0.0.1:8000/staff/appoinmentViewDoctor/", inputData)
       .then((response) => {
@@ -25,8 +22,22 @@ const DocViewAppoinment = () => {
       });
   };
 
+  const toggleStatus = (data, status) => {
+    const param = {
+      bookingid: data.bookingid,
+      status: status,
+    };
+
+    axios
+      .put("http://127.0.0.1:8000/staff/appoinmentStatusUpdateDoctor/", param)
+      .then((response) => {
+        setAppoinmentData(response.data);
+        getAppointments();
+      });
+  };
+
   useEffect(() => {
-    readValue();
+    getAppointments();
   }, []);
 
   return (
@@ -46,42 +57,54 @@ const DocViewAppoinment = () => {
         <div className="row">
           <div className="col">
             <div className="row">
-              <div className="col">
-                <table className="table table-bordered table-striped">
+              <div className="col d-flex justify-content-around">
+                <table className="table table-bordered table-striped w-3/4">
                   <thead>
                     <tr>
                       <th scope="col">Name</th>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
+                      <th scope="col">Status</th>
                       <th className="d-flex justify-content-center" scope="col">
                         Accept
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {appoinmentData.map((value, index) => {
-                      return (
-                        <tr key={`booking_${index}`}>
-                          <th scope="row">{value.user.name}</th>
-                          <td>{value.date}</td>
-                          <td>{value.time}</td>
-                          <td className="d-flex justify-content-center">
-                            <button
-                              className="btn btn-outline-success mr-2"
-                              type="button"
-                            >
-                              Accept
-                            </button>
-                            <button
-                              className="btn btn-outline-danger"
-                              type="button"
-                            >
-                              Decline
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {appoinmentData &&
+                      appoinmentData.length > 0 &&
+                      appoinmentData.map((value, index) => {
+                        return (
+                          <tr key={`booking_${index}`}>
+                            <th scope="row">{value.user.name}</th>
+                            <td>{value.date}</td>
+                            <td>{value.time}</td>
+                            <td>{value.status}</td>
+                            <td className="d-flex justify-content-center">
+                              <button
+                                className="btn btn-outline-success mr-2"
+                                type="button"
+                                disabled={value.status === DocStatus.Accept}
+                                onClick={() =>
+                                  toggleStatus(value, DocStatus.Accept)
+                                }
+                              >
+                                Accept
+                              </button>
+                              <button
+                                className="btn btn-outline-danger"
+                                type="button"
+                                disabled={value.status === DocStatus.Decline}
+                                onClick={() =>
+                                  toggleStatus(value, DocStatus.Decline)
+                                }
+                              >
+                                Decline
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>

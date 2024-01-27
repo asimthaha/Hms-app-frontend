@@ -20,11 +20,11 @@ const DocNavbar = () => {
         </button>
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
-            <Link className="navbar-brand" to="/doc">
+            <Link className="navbar-brand" to="/doctor">
               CARDIOCARE
             </Link>
           </h1>
-          <Link to="/doc" className="logo me-auto">
+          <Link to="/doctor" className="logo me-auto">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
@@ -34,17 +34,23 @@ const DocNavbar = () => {
           >
             <ul>
               <li>
-                <Link className="nav-link scrollto active" to="/doc">
+                <Link className="nav-link scrollto active" to="/doctor">
                   Home
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/viewAppoinments">
+                <Link
+                  className="nav-link scrollto"
+                  to="/doctor/viewAppoinments"
+                >
                   Appoinments
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto mr-2" to="/viewPatients">
+                <Link
+                  className="nav-link scrollto mr-2"
+                  to="/doctor/viewPatients"
+                >
                   Patients
                 </Link>
               </li>

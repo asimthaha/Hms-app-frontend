@@ -35,7 +35,10 @@ const Services = () => {
               <div className="icon-boxes d-flex flex-column justify-content-center">
                 <div className="row">
                   <div className="col-xl-4 d-flex align-items-stretch">
-                    <Link className="icon-box mt-4 mt-xl-0" to="/predictHeart">
+                    <Link
+                      className="icon-box mt-4 mt-xl-0"
+                      to="/user/predictHeart"
+                    >
                       <i className="bx bx-receipt"></i>
                       <h4>Predict your Health</h4>
                       <p>
@@ -45,7 +48,7 @@ const Services = () => {
                     </Link>
                   </div>
                   <div className="col-xl-4 d-flex align-items-stretch">
-                    <Link className="icon-box mt-4 mt-xl-0 " to="/doctors">
+                    <Link className="icon-box mt-4 mt-xl-0 " to="/user/doctors">
                       <i className="bx bx-cube-alt"></i>
                       <h4>Doctors</h4>
                       <p>
@@ -55,7 +58,7 @@ const Services = () => {
                     </Link>
                   </div>
                   <div className="col-xl-4 d-flex align-items-stretch">
-                    <Link className="icon-box mt-4 mt-xl-0" to="/results">
+                    <Link className="icon-box mt-4 mt-xl-0" to="/user/results">
                       <i className="bx bx-images"></i>
                       <h4>Results</h4>
                       <p>

@@ -24,7 +24,7 @@ const PharmNavbar = () => {
               CARDIOCARE
             </Link>
           </h1>
-          <Link to="/doc" className="logo me-auto">
+          <Link to="/pharmacist" className="logo me-auto">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
@@ -39,12 +39,15 @@ const PharmNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/medicines">
+                <Link className="nav-link scrollto" to="/pharmacist/medicines">
                   Medicines
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto mr-2" to="/payments">
+                <Link
+                  className="nav-link scrollto mr-2"
+                  to="/pharmacist/payments"
+                >
                   Payments
                 </Link>
               </li>

@@ -211,7 +211,7 @@ const ViewPatients = () => {
                             aria-labelledby="pills-home-tab"
                           >
                             <div>
-                              <h2>Medicine History</h2>
+                              <h2 className="font-bold">Medicine History</h2>
                               <table className="table table-striped">
                                 <thead>
                                   <tr>
@@ -255,7 +255,7 @@ const ViewPatients = () => {
                             aria-labelledby="pills-profile-tab"
                           >
                             <div>
-                              <h2>Results History</h2>
+                              <h2 className="font-bold">Results History</h2>
                               <table className="table table-striped">
                                 <thead>
                                   <tr>
@@ -301,7 +301,7 @@ const ViewPatients = () => {
                             aria-labelledby="pills-contact-tab"
                           >
                             <div>
-                              <h2>Bookings History</h2>
+                              <h2 className="font-bold">Bookings History</h2>
                               <table className="table table-striped">
                                 <thead>
                                   <tr>

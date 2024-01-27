@@ -112,8 +112,8 @@ const Medicines = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <div className="row">
-              <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 d-flex align-items-center">
+            <div className="row g-3">
+              <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                 <div className="card">
                   <img src="..." className="card-img-top" alt="..." />
                   <div className="card-body">

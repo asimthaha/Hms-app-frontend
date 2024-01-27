@@ -24,9 +24,12 @@ const DoctorHome = () => {
               {username ? <h2>HEY {username.toLocaleUpperCase()}</h2> : <p></p>}
               <h1>Welcome to CardioCare</h1>
               <h2>Helping People is what we do</h2>
-              <a href="#about" className="btn-get-started scrollto">
+              <Link
+                to="/doctor/viewAppoinments"
+                className="btn-get-started scrollto"
+              >
                 Get Started
-              </a>
+              </Link>
             </div>
           </section>
         </>

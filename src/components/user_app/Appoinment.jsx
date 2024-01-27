@@ -9,11 +9,14 @@ import TimeBooking from "./TimeBooking";
 const Appoinment = ({ doctorId }) => {
   const navigate = useNavigate();
 
+  const [availableTimes, setAvailableTimes] = useState([]);
+
   const [inputField, changeInputField] = useState({
     userid: sessionStorage.getItem("userid"),
-    doctorid: 0,
+    doctorid: "",
     time: "",
     date: "",
+    status: "Accept",
   });
 
   useEffect(() => {
@@ -25,9 +28,14 @@ const Appoinment = ({ doctorId }) => {
 
   const handleDatePick = (date) => {
     setStartDate(date);
+    const currentDate = new Date(date);
+    const yyyy = currentDate.getFullYear();
+    let mm = currentDate.getMonth() + 1; // Months start at 0!
+    let dd = currentDate.getDate();
+
     changeInputField({
       ...inputField,
-      date: new Date(date).toLocaleDateString(),
+      date: dd + "/" + mm + "/" + yyyy,
     });
   };
 
@@ -49,7 +57,8 @@ const Appoinment = ({ doctorId }) => {
     axios
       .post("http://127.0.0.1:8000/user/disableAppoinments/", inputField)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
+        setAvailableTimes(response.data);
       });
   };
 
@@ -72,7 +81,7 @@ const Appoinment = ({ doctorId }) => {
         <div className="row">
           <div className="col">
             <form
-              className="row card needs-validation bg-slate-100"
+              className="row card needs-validation"
               id="appointment-form"
               onSubmit={(ev) => {
                 ev.preventDefault();
@@ -93,7 +102,10 @@ const Appoinment = ({ doctorId }) => {
                     placeholderText="Select a date from today"
                   />
                 </div>
-                <TimeBooking handleTimeChange={handleTimeChange} />
+                <TimeBooking
+                  handleTimeChange={handleTimeChange}
+                  availableTimes={availableTimes}
+                />
               </div>
               <div className="col col-sm-12 colmd-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-center my-3">
                 <button
