@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import Services from "./user_app/Services";
+import DocNavbar from "./DocNavbar";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const DoctorHome = () => {
+  const username = sessionStorage.getItem("username");
   const [isLoading, changeLoading] = useState(true);
 
   useEffect(() => {
@@ -13,26 +13,23 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <Navbar />
+    <div>
+      <DocNavbar />
       {isLoading ? (
         <div id="preloader"></div>
       ) : (
         <>
           <section id="hero" className="d-flex align-items-center">
             <div className="container">
-              {sessionStorage.getItem("userid") ? (
-                <h2>
-                  HEY {sessionStorage.getItem("name").toLocaleUpperCase()}
-                </h2>
-              ) : (
-                <p></p>
-              )}
+              {username ? <h2>HEY {username.toLocaleUpperCase()}</h2> : <p></p>}
               <h1>Welcome to CardioCare</h1>
               <h2>Helping People is what we do</h2>
-              <a href="#about" className="btn-get-started scrollto">
+              <Link
+                to="/doctor/viewAppoinments"
+                className="btn-get-started scrollto"
+              >
                 Get Started
-              </a>
+              </Link>
             </div>
           </section>
         </>
@@ -45,9 +42,8 @@ const Home = () => {
           <i className="bi bi-arrow-up-short"></i>
         </Link>
       </div>
-      <Services />
-    </>
+    </div>
   );
 };
 
-export default Home;
+export default DoctorHome;

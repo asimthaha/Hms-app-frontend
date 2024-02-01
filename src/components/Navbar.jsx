@@ -6,88 +6,66 @@ const Navbar = () => {
   return (
     <>
       <Topbar />
-      <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
-          <h1 class="logo me-auto">
+      <header id="header" className="fixed-top">
+        <div className="container d-flex align-items-center">
+          <h1 className="logo me-auto">
             <Link className="navbar-brand" to="/">
-              Medlab
+              CARDIOCARE
             </Link>
           </h1>
-          <Link to="/" class="logo me-auto">
-            <img src="assets/img/logo.png" alt="" class="img-fluid" />
+          <Link to="/" className="logo me-auto">
+            <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
-          <nav id="navbar" class="navbar order-last order-lg-0">
+          <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
-              <li>
-                <Link class="nav-link scrollto active" to="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link class="nav-link scrollto" to="/departments">
-                  Departments
-                </Link>
-              </li>
-              <li>
-                <Link class="nav-link scrollto" to="/doctors">
-                  Doctors
-                </Link>
-              </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <Link to="#">
-                  <span>Drop Down</span> <i class="bi bi-chevron-down"></i>
+                  <span>Health Care</span>{" "}
+                  <i className="bi bi-chevron-down"></i>
                 </Link>
                 <ul>
                   <li>
-                    <Link to="#">Drop Down 1</Link>
-                  </li>
-                  <li class="dropdown">
-                    <Link to="#">
-                      <span>Deep Drop Down</span>{" "}
-                      <i class="bi bi-chevron-right"></i>
-                    </Link>
-                    <ul>
-                      <li>
-                        <Link to="#">Deep Drop Down 1</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 2</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 3</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 4</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Deep Drop Down 5</Link>
-                      </li>
-                    </ul>
+                    <Link to="/user/predictHeart">Heart Disease</Link>
                   </li>
                   <li>
-                    <Link to="#">Drop Down 2</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Drop Down 3</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Drop Down 4</Link>
+                    <Link to="/user/bmi">Bmi Calculator</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link class="nav-link scrollto" to="#contact">
-                  Contact
+                <Link className="nav-link scrollto" to="/user/doctors">
+                  Doctors
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link scrollto" to="/user/results">
+                  Results
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link scrollto" to="/user/medicines">
+                  Medicines
                 </Link>
               </li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>
-
-          <Link to="#appointment" class="appointment-btn scrollto">
-            <span class="d-none d-md-inline">Sign in</span>
-          </Link>
+          <button type="button" class="btn position-relative">
+            <i class="bi bi-bell-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3+
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
+          <div className="ml-2">
+            {sessionStorage.getItem("userid") ? (
+              <p>{sessionStorage.getItem("name").toLocaleUpperCase()}</p>
+            ) : (
+              <Link to="/login">
+                <span className="buttn">Sign in</span>
+              </Link>
+            )}
+          </div>
         </div>
       </header>
     </>
