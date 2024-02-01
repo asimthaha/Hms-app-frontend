@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <>
-      <Navbar />
       <section id="why-us" className="why-us">
         <div className="container">
           <div className="row">
