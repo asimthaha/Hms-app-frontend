@@ -2,56 +2,33 @@ import React, { useEffect, useState } from "react";
 import PharmNavbar from "./PharmNavbar";
 import axios from "axios";
 
+export const MedStatus = {
+  Accept: "Accept",
+  Decline: "Decline",
+};
+
 const PharmMeds = () => {
-  const [data, changeData] = useState([
-    {
-      medicineid: 24,
-      user: {
-        userid: 1,
-        name: "ASIM THAHA AZEEZ",
-        email: "iamasimthaha@gmail.com",
-        password: "1234",
-        phone: 8281616294,
-      },
-      inferences: "chest pain",
-      date: "2024-01-12",
-      medicines_data: [
-        {
-          meds: "paracetamol",
-          times: "3 times",
-          days: "5 days",
-        },
-        {
-          meds: "paracetamol",
-          times: "3 times",
-          days: "5 days",
-        },
-      ],
-      userid: 1,
-      doctorid: 1,
-    },
-    {
-      medicineid: 25,
-      user: {
-        userid: 1,
-        name: "ASIM THAHA AZEEZ",
-        email: "iamasimthaha@gmail.com",
-        password: "1234",
-        phone: 8281616294,
-      },
-      inferences: "",
-      date: "2024-01-12",
-      medicines_data: [],
-      userid: 1,
-      doctorid: 1,
-    },
-  ]);
+  const [data, changeData] = useState([]);
 
   const fetchData = () => {
     axios
       .post("http://127.0.0.1:8000/staff/viewMedicinePharmacist/")
       .then((response) => {
         changeData(response.data);
+      });
+  };
+
+  const toggleStatus = (data, status) => {
+    const param = {
+      medicineid: data.medicineid,
+      status: status,
+    };
+
+    axios
+      .put("http://127.0.0.1:8000/staff/updateMedicinePharmacist/", param)
+      .then((response) => {
+        changeData(response.data);
+        fetchData();
       });
   };
 
@@ -72,31 +49,71 @@ const PharmMeds = () => {
           </h2>
         </div>
         <div className="row">
-          <div className="col">
-            <div className="row g-3">
-              {data.map((value, index) => {
-                return (
-                  <div className="col col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4 card-group">
-                    <div className="card text-center">
-                      <div className="card-header d-flex justify-content-start">
-                        {value.user.name}
-                      </div>
-                      <div className="card-body">
-                        <ul className="list-group list-group-flush">
+          <div className="col d-flex justify-content-around">
+            <table className="table table-bordered w-3/4">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Medcines</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Rate</th>
+                  <th className="d-flex justify-content-center" scope="col">
+                    Accept
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data &&
+                  data.length > 0 &&
+                  data.map((value, index) => {
+                    return (
+                      <tr key={`booking_${index}`}>
+                        <th scope="row">{value.user.name}</th>
+                        <td>{value.date}</td>
+                        <td>
                           {value.medicines_data.map((meds, index) => {
                             return (
-                              <li className="list-group-item">
-                                {meds.meds}, {meds.times}, {meds.days}
-                              </li>
+                              <ul key={`med_${index}`}>
+                                <li>
+                                  {meds.meds}, {meds.times} times, {meds.days}{" "}
+                                  days
+                                </li>
+                              </ul>
                             );
                           })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                        </td>
+                        <td>{value.med_status}</td>
+                        <td>
+                          <input type="number" className="form-control" />
+                        </td>
+                        <td className="d-flex justify-content-center">
+                          <button
+                            className="btn btn-outline-success mr-2"
+                            type="button"
+                            disabled={value.med_status === MedStatus.Accept}
+                            onClick={() =>
+                              toggleStatus(value, MedStatus.Accept)
+                            }
+                          >
+                            Accept
+                          </button>
+                          <button
+                            className="btn btn-outline-danger"
+                            type="button"
+                            disabled={value.med_status === MedStatus.Decline}
+                            onClick={() =>
+                              toggleStatus(value, MedStatus.Decline)
+                            }
+                          >
+                            Decline
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

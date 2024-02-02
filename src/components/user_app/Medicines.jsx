@@ -6,7 +6,7 @@ import Navbar from "../Navbar";
 
 const Medicines = () => {
   const Razorpay = useRazorpay();
-  const [amount, setAmount] = useState(500);
+  const [amount, setAmount] = useState(1);
 
   // complete order
   const complete_order = (paymentID, orderID, signature) => {

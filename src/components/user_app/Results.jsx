@@ -7,15 +7,34 @@ const Results = () => {
     userid: sessionStorage.getItem("userid"),
   });
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      resultid: 2,
+      doctors: {
+        staffid: 1,
+        name: "Athul Abraham",
+      },
+      testDate: "2024-02-01",
+      ecgpwave: "120",
+      heartRate: "100",
+      bloodGroup: "A+",
+      bloodPressure: "120/80",
+      oxygenSaturation: "0.90",
+      cholesterol: 200,
+      hdlcholesterol: 70,
+      ldlcholesterol: 90,
+      userid: 1,
+      doctorid: 1,
+    },
+  ]);
 
   const fetchData = () => {
     console.log(data);
-    axios
-      .post("http://127.0.0.1:8000/user/viewResultsUser/", inputData)
-      .then((response) => {
-        setData(response.data);
-      });
+    // axios
+    //   .post("http://127.0.0.1:8000/user/viewResultsUser/", inputData)
+    //   .then((response) => {
+    //     setData(response.data);
+    //   });
   };
 
   useEffect(() => {
@@ -42,21 +61,22 @@ const Results = () => {
               <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                 {data.map((value, index) => {
                   return (
-                    <div class="card" key={`results_${index}`}>
-                      <div class="card-header d-flex justify-content-between">
+                    <div
+                      class="card border-primary shadow"
+                      key={`results_${index}`}
+                    >
+                      <div class="card-header d-flex justify-content-between bg-blue-400 hover:bg-blue-500">
+                        <div>Doctor: {value.doctors.name}</div>
                         <div>Date: {value.testDate}</div>
-                        <div>Blood Group: {value.bloodGroup}</div>
                       </div>
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-around">
                           <div>ECG: {value.ecgpwave}</div>
                           <div>HeartRate: {value.heartRate}</div>
                         </li>
-                        <li class="list-group-item d-flex justify-content-around">
-                          <div>
-                            Blood Pressure: {value.bloodPressure}, Oxygen
-                          </div>
-                          <div>Saturation: {value.oxygenSaturation}</div>
+                        <li class="list-group-item d-flex justify-content-around p-3">
+                          <div>Blood Pressure: {value.bloodPressure}</div>
+                          <div>Oxygen Saturation: {value.oxygenSaturation}</div>
                         </li>
                         <li class="list-group-item d-flex justify-content-around">
                           <div>Cholestrol: {value.cholesterol}</div>

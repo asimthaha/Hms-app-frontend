@@ -39,27 +39,29 @@ const BmiCalc = () => {
           <section className="card w-50 d-flex align-items-center mt-3">
             <div className="row">
               <div className="col">
-                <div className="row g-3">
-                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3">
+                <form className="row g-3 needs-validation">
+                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3 was-validated">
                     <label htmlFor="" className="form-label">
                       Height (in centimeter*)
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       name="height"
+                      required
                       id=""
                       value={inputField.height}
                       onChange={inputHandler}
                       className="form-control"
                     />
                   </div>
-                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3">
+                  <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 px-3 was-validated">
                     <label htmlFor="" className="form-label">
                       Weight (in kilogram*)
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       name="weight"
+                      required
                       value={inputField.weight}
                       onChange={inputHandler}
                       id=""
@@ -75,7 +77,7 @@ const BmiCalc = () => {
                       submit
                     </button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             {result == false ? (

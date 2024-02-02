@@ -19,6 +19,11 @@ const Navbar = () => {
 
           <nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
+              <li>
+                <Link className="nav-link scrollto active" to="/">
+                  Home
+                </Link>
+              </li>
               <li className="dropdown">
                 <Link to="#">
                   <span>Health Care</span>{" "}

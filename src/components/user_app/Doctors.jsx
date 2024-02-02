@@ -59,7 +59,7 @@ const Doctors = () => {
                             ev.preventDefault();
                             setDoctorId(value.staffid);
                           }}
-                          className="btn bg-blue-500 hover:bg-green-400 text-white"
+                          className="btn bg-blue-500 hover:bg-blue-400 text-white"
                           type="button"
                           data-bs-toggle="offcanvas"
                           data-bs-target="#offcanvasExample"
