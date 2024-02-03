@@ -44,8 +44,8 @@ const Medicines = () => {
 
         // handle payment
         const options = {
-          key: "rzp_test_IbESPvslW2YOv2", // Enter the Key ID generated from the Dashboard
-          name: "Cardio Care",
+          key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+          name: "Acme Corp",
           description: "Test Transaction",
           image: "https://example.com/your_logo",
           order_id: order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
@@ -66,19 +66,16 @@ const Medicines = () => {
             },
           },
           prefill: {
-            name: "Asim Thaha",
-            email: "iamasimthaha@gmail.com ",
-            contact: "8281616294",
+            name: "Piyush Garg",
+            email: "youremail@example.com",
+            contact: "9999999999",
           },
           notes: {
             address: "Razorpay Corporate Office",
           },
-          theme: {
-            color: "#3399cc",
-          },
         };
 
-        const rzp1 = new window.Razorpay(options);
+        const rzp1 = new Razorpay(options);
         rzp1.on("payment.failed", function (response) {
           alert(response.error.code);
           alert(response.error.description);
@@ -87,7 +84,6 @@ const Medicines = () => {
           alert(response.error.reason);
           alert(response.error.metadata.order_id);
           alert(response.error.metadata.payment_id);
-          alert(response.error.metadata.signature);
         });
         rzp1.open();
       })
