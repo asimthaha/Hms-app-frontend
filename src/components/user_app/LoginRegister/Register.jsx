@@ -23,7 +23,7 @@ const Register = () => {
     axios
       .post("http://127.0.0.1:8000/user/register/", inputField)
       .then((response) => {
-        if (response.data.status === "User data Added Successfully") {
+        if (response.data.status === "success") {
           navigate("/login");
         } else {
           alert("Provide correct data");
