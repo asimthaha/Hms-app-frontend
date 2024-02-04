@@ -16,7 +16,6 @@ const Appoinment = ({ doctorId }) => {
     doctorid: "",
     time: "",
     date: "",
-    status: "",
   });
 
   useEffect(() => {

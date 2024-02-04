@@ -12,10 +12,12 @@ const Doctors = () => {
       .post("http://127.0.0.1:8000/staff/displayDoctor/")
       .then((response) => {
         changeData(response.data);
+        console.log(response.data);
       });
   };
 
   const [dId, setDoctorId] = useState(0);
+  console.log(dId);
 
   useEffect(() => {
     fetchData();

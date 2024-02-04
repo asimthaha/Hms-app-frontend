@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useRazorpay from "react-razorpay";
 import Navbar from "../Navbar";
 
 const Medicines = () => {
-  const Razorpay = useRazorpay();
   const [amount, setAmount] = useState(1);
 
   // complete order
@@ -14,6 +12,7 @@ const Medicines = () => {
       method: "post",
       url: "http://127.0.0.1:8000/user/payment/complete/",
       data: {
+        user_id: sessionStorage.getItem("userid"),
         payment_id: paymentID,
         order_id: orderID,
         signature: signature,
@@ -44,8 +43,8 @@ const Medicines = () => {
 
         // handle payment
         const options = {
-          key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-          name: "Acme Corp",
+          key: "rzp_test_IbESPvslW2YOv2", // Enter the Key ID generated from the Dashboard
+          name: "Cardio Care",
           description: "Test Transaction",
           image: "https://example.com/your_logo",
           order_id: order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
@@ -56,6 +55,11 @@ const Medicines = () => {
               response.razorpay_order_id,
               response.razorpay_signature
             );
+            console.log({
+              "payment id": response.razorpay_payment_id,
+              "order id": response.razorpay_order_id,
+              "payment signature": response.razorpay_signature,
+            });
           },
           checkout: {
             method: {
@@ -66,16 +70,16 @@ const Medicines = () => {
             },
           },
           prefill: {
-            name: "Piyush Garg",
-            email: "youremail@example.com",
-            contact: "9999999999",
+            name: "Asim Thaha",
+            email: "iamasimthaha@gmail.com ",
+            contact: "8281616294",
           },
           notes: {
             address: "Razorpay Corporate Office",
           },
         };
 
-        const rzp1 = new Razorpay(options);
+        const rzp1 = new window.Razorpay(options);
         rzp1.on("payment.failed", function (response) {
           alert(response.error.code);
           alert(response.error.description);
@@ -84,6 +88,7 @@ const Medicines = () => {
           alert(response.error.reason);
           alert(response.error.metadata.order_id);
           alert(response.error.metadata.payment_id);
+          alert(response.error.metadata.signature);
         });
         rzp1.open();
       })

@@ -55,11 +55,11 @@ const Navbar = () => {
               </li>
             </ul>
           </nav>
-          <button type="button" class="btn position-relative">
-            <i class="bi bi-bell-fill"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          <button type="button" className="btn position-relative">
+            <i className="bi bi-bell-fill"></i>
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               3+
-              <span class="visually-hidden">unread messages</span>
+              <span className="visually-hidden">unread messages</span>
             </span>
           </button>
           <div className="ml-2">
