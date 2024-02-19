@@ -16,7 +16,9 @@ const PharmHome = () => {
     <div>
       <PharmNavbar />
       {isLoading ? (
-        <div id="preloader"></div>
+        <div id="preloader">
+          <i class="bi bi-heart-pulse"></i>
+        </div>
       ) : (
         <>
           <section id="hero" className="d-flex align-items-center">

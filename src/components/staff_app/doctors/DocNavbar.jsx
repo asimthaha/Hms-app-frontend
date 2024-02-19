@@ -34,23 +34,12 @@ const DocNavbar = () => {
           >
             <ul>
               <li>
-                <Link className="nav-link scrollto active" to="/doctor">
+                <Link className="nav-link" to="/doctor">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  className="nav-link scrollto"
-                  to="/doctor/viewAppoinments"
-                >
-                  Appoinments
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="nav-link scrollto mr-2"
-                  to="/doctor/viewPatients"
-                >
+                <Link className="nav-link mr-2" to="/doctor/viewPatients">
                   Patients
                 </Link>
               </li>

@@ -34,20 +34,17 @@ const PharmNavbar = () => {
           >
             <ul>
               <li>
-                <Link className="nav-link scrollto active" to="/pharmacist">
+                <Link className="nav-link" to="/pharmacist">
                   Home
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/pharmacist/medicines">
+                <Link className="nav-link" to="/pharmacist/medicines">
                   Medicines
                 </Link>
               </li>
               <li>
-                <Link
-                  className="nav-link scrollto mr-2"
-                  to="/pharmacist/payments"
-                >
+                <Link className="nav-link mr-2" to="/pharmacist/payments">
                   Payments
                 </Link>
               </li>
