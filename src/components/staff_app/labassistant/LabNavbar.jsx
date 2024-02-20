@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Topbar from "../../Topbar";
 
-const DocNavbar = () => {
+const LabNavbar = () => {
   return (
     <>
       <Topbar />
@@ -24,7 +24,7 @@ const DocNavbar = () => {
               CARDIOCARE
             </Link>
           </h1>
-          <Link to="/doctor" className="logo me-auto">
+          <Link to="/labAssistant" className="logo me-auto">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
@@ -34,18 +34,13 @@ const DocNavbar = () => {
           >
             <ul>
               <li>
-                <Link className="nav-link" to="/doctor">
+                <Link className="nav-link" to="/labAssistant">
                   Home
                 </Link>
               </li>
               <li>
-                <Link className="nav-link" to="/doctor">
-                  Appoinments
-                </Link>
-              </li>
-              <li>
-                <Link className="nav-link mr-2" to="/doctor/viewPatients">
-                  Patients
+                <Link className="nav-link" to="/labAssistant/results">
+                  Results
                 </Link>
               </li>
             </ul>
@@ -56,4 +51,4 @@ const DocNavbar = () => {
   );
 };
 
-export default DocNavbar;
+export default LabNavbar;

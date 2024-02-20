@@ -37,7 +37,7 @@ const StaffLogin = () => {
             navigate("/pharmacist");
             break;
           case "LabAssistant":
-            navigate("http://127.0.0.1:8000/");
+            navigate("/labAssistant");
             break;
           default:
             break;

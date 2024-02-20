@@ -16,6 +16,8 @@ import PharmMeds from "./components/staff_app/pharmacist/PharmMeds";
 import PharmPay from "./components/staff_app/pharmacist/PharmPay";
 import Medicines from "./components/user_app/Medicines";
 import Results from "./components/user_app/Results";
+import LabHome from "./components/staff_app/labassistant/LabHome";
+import LabResults from "./components/staff_app/labassistant/LabResults";
 
 function App() {
   return (
@@ -34,11 +36,15 @@ function App() {
 
         <Route path="staffLogin" element={<StaffLogin />} />
         <Route path="doctor" element={<DoctorHome />} />
+        <Route path="doctor/viewAppointments" element={<DocViewAppoinment />} />
         <Route path="doctor/viewPatients" element={<ViewPatients />} />
 
         <Route path="pharmacist" element={<PharmHome />} />
         <Route path="pharmacist/medicines" element={<PharmMeds />} />
         <Route path="pharmacist/payments" element={<PharmPay />} />
+
+        <Route path="labAssistant" element={<LabHome />} />
+        <Route path="labAssistant/results" element={<LabResults />} />
       </Routes>
     </BrowserRouter>
   );

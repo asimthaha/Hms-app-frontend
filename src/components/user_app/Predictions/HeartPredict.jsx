@@ -359,7 +359,7 @@ const HeartPredict = () => {
               <div className="form-group was-validated col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-center">
                 <button
                   onClick={readValue}
-                  type="submit"
+                  type="button"
                   className="btn btn-outline-primary"
                 >
                   Predict
