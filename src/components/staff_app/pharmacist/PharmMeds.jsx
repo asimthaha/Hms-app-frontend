@@ -18,10 +18,19 @@ const PharmMeds = () => {
       });
   };
 
+  const updateHandler = (total_rate) => {
+    console.log("called");
+    changeData({
+      ...data,
+      total_rate: total_rate,
+    });
+  };
+
   const toggleStatus = (data, status) => {
     const param = {
       medicineid: data.medicineid,
       status: status,
+      total_rate: data.total_rate,
     };
 
     axios
@@ -85,7 +94,12 @@ const PharmMeds = () => {
                         </td>
                         <td>{value.med_status}</td>
                         <td>
-                          <input type="number" className="form-control" />
+                          <input
+                            type="number"
+                            className="form-control"
+                            value={value.total_rate}
+                            onChange={updateHandler}
+                          />
                         </td>
                         <td className="d-flex justify-content-center">
                           <button

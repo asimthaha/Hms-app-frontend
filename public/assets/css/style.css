@@ -45,28 +45,68 @@ h6 {
   z-index: 9999;
   overflow: hidden;
   background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #1977cc;
-  border-top-color: #d1e6f9;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+#preloader i {
+  font-size: 60px;
+  color: #1977cc;
   animation: animate-preloader 1s linear infinite;
 }
 
 @keyframes animate-preloader {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
+  }
+}
+
+.heart-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.heart-container i {
+  position: absolute;
+  animation: appear-from-left 1s ease-in-out;
+}
+
+@keyframes appear-from-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.heart-container .bi-activity {
+  animation: pulsate-line 1s ease-in-out infinite;
+}
+
+@keyframes pulsate-line {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.5);
+  }
+
+  100% {
+    transform: scaleY(1);
   }
 }
 
