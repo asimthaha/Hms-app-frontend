@@ -39,7 +39,7 @@ const DocNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link" to="/doctor">
+                <Link className="nav-link" to="/doctor/viewAppointments">
                   Appoinments
                 </Link>
               </li>

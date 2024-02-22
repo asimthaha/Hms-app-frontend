@@ -17,7 +17,7 @@ const PharmHome = () => {
       <PharmNavbar />
       {isLoading ? (
         <div id="preloader">
-          <i class="bi bi-heart-pulse"></i>
+          <i className="bi bi-heart-pulse"></i>
         </div>
       ) : (
         <>

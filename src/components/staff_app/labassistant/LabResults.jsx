@@ -1,48 +1,88 @@
 import React, { useEffect, useState } from "react";
 import LabNavbar from "./LabNavbar";
-import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 import axios from "axios";
 
 const LabResults = () => {
   const currentDate = new Date();
 
-  const [data, changeData] = useState([]);
-  const fetchData = () => {
-    axios.post("http://127.0.0.1:8000/staff/userData/").then((response) => {
-      console.log(response.data);
-      changeData(response.data);
-    });
+  const [data, setData] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/staff/userData/");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  const userOptions =
+    data &&
+    data.users &&
+    data.users.length > 0 &&
+    data.users.map((user) => ({
+      label: user.name,
+      value: user.userid,
+    }));
+
+  const doctorOptions =
+    data &&
+    data.doctors &&
+    data.doctors.length > 0 &&
+    data.doctors.map((doctor) => ({
+      label: doctor.name,
+      value: doctor.doctorid,
+    }));
+
   const [inputField, changeInputField] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
+    userid: selectedUser ? selectedUser.value : null,
+    doctorid: selectedDoctor ? selectedDoctor.value : null,
+    testDate: "",
+    ecgpwave: "120",
+    heartRate: "100",
+    bloodGroup: "B+",
+    bloodPressure: "120/80",
+    oxygenSaturation: 0.95,
+    cholesterol: 200,
+    hdlcholesterol: 60,
+    ldlcholesterol: 90,
+    cost: 200,
   });
 
-  const navigate = useNavigate();
-
   const inputHandler = (newEvent) => {
-    changeInputField({
-      ...inputField,
-      [newEvent.target.name]: newEvent.target.value,
-    });
+    if (newEvent.target.name === "user") {
+      setSelectedUser(newEvent.target.value);
+      changeInputField({
+        ...inputField,
+        userid: selectedUser ? selectedUser.value : null,
+      });
+    } else if (newEvent.target.name === "doctor") {
+      setSelectedDoctor(newEvent.target.value);
+      changeInputField({
+        ...inputField,
+        doctorid: selectedDoctor ? selectedDoctor.value : null,
+      });
+    } else {
+      changeInputField({
+        ...inputField,
+        [newEvent.target.name]: newEvent.target.value,
+      });
+    }
   };
 
-  const readValue = () => {
+  const submitResults = () => {
+    console.log(inputField);
     axios
-      .post("http://127.0.0.1:8000/user/register/", inputField)
+      .post("http://127.0.0.1:8000/staff/saveResults/", inputField)
       .then((response) => {
-        if (response.data.status === "success") {
-          navigate("/login");
-        } else {
-          alert("Provide correct data");
-        }
+        alert(response.data.status);
       });
   };
 
@@ -56,81 +96,78 @@ const LabResults = () => {
           className="mb-12 section-heading wow fadeInDown"
           data-wow-delay="0.3s"
         >
-          Add Results
+          Results
         </h2>
       </div>
-      <div className="container w-75">
-        <div className="row">
-          <div className="col card shadow">
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <div className="col-10 card shadow ">
             <form className="row needs-validation g-3" noValidate>
               <div className="col col-sm-12 col-md-4 col-lg-4 col-xl-4 xol-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   User's Name
                 </label>
-                <select
-                  class="form-select"
-                  aria-label="Small select example"
-                  required
-                >
-                  <option selected disabled value="">
-                    Open this select menu
-                  </option>
-                  <option value="1">{data.users}</option>
-                </select>
-                <div class="valid-feedback">Looks good!</div>
+                <Select
+                  name="user"
+                  options={userOptions}
+                  value={selectedUser}
+                  onChange={(selectedOption) => {
+                    setSelectedUser(selectedOption);
+                    changeInputField({
+                      ...inputField,
+                      userid: selectedOption.value,
+                    });
+                  }}
+                />
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-sm-12 col-md-4 col-lg-4 col-xl-4 xol-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   Doctor's Name
                 </label>
-                <select
-                  class="form-select"
-                  aria-label="Small select example"
-                  required
-                >
-                  <option selected disabled value="">
-                    Open this select menu
-                  </option>
-                  <option value="1">{data.doctors}</option>
-                </select>
-                <div class="valid-feedback">Looks good!</div>
+                <Select
+                  name="doctor"
+                  options={doctorOptions}
+                  value={selectedDoctor}
+                  onChange={(selectedOption) => {
+                    setSelectedDoctor(selectedOption);
+                    changeInputField({
+                      ...inputField,
+                      doctorid: selectedOption.value,
+                    });
+                  }}
+                />
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-sm-12 col-md-4 col-lg-4 col-xl-4 xol-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   Test Date
                 </label>
                 <input
+                  name="testDate"
+                  value={inputField.testDate}
+                  onChange={inputHandler}
                   required
                   type="date"
                   min={currentDate}
                   className="form-control"
                 />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div className="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 was-validated">
-                <label htmlFor="" className="form-label">
-                  ECG p wave
-                </label>
-                <input required type="text" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div className="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 was-validated">
-                <label htmlFor="" className="form-label">
-                  Heart Rate
-                </label>
-                <input required type="text" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   Blood Group
                 </label>
                 <select
-                  class="form-select"
+                  className="form-select"
                   aria-label="Small select example"
+                  name="bloodgroup"
+                  value={inputField.bloodGroup}
                   required
+                  onChange={inputHandler}
+                  defaultValue={""}
                 >
-                  <option selected disabled value="">
+                  <option disabled value="">
                     Open this select menu
                   </option>
                   <option value="A+">A+</option>
@@ -142,20 +179,30 @@ const LabResults = () => {
                   <option value="AB+">AB+</option>
                   <option value="AB-">AB-</option>
                 </select>
-                <div class="valid-feedback">Looks good!</div>
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   Blood Pressure
                 </label>
-                <input required type="text" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
+                <input
+                  name="bloodPressure"
+                  value={inputField.bloodPressure}
+                  required
+                  type="text"
+                  className="form-control"
+                  onChange={inputHandler}
+                />
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   Oxygen Saturation
                 </label>
                 <input
+                  name="oxygenSaturation"
+                  value={inputField.oxygenSaturation}
+                  onChange={inputHandler}
                   required
                   type="number"
                   max={1.0}
@@ -163,8 +210,8 @@ const LabResults = () => {
                   step={0.05}
                   className="form-control"
                 />
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">
                   Please choose a value between 0 and 1.
                 </div>
               </div>
@@ -172,25 +219,106 @@ const LabResults = () => {
                 <label htmlFor="" className="form-label">
                   Cholestrol
                 </label>
-                <input required type="number" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
+                <input
+                  name="cholesterol"
+                  value={inputField.cholesterol}
+                  onChange={inputHandler}
+                  min={0}
+                  required
+                  type="number"
+                  className="form-control"
+                />
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">eg: 200 mg/dL</div>
               </div>
               <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   HDL cholesterol
                 </label>
-                <input required type="number" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
+                <input
+                  name="hdlcholesterol"
+                  value={inputField.hdlcholesterol}
+                  onChange={inputHandler}
+                  min={0}
+                  required
+                  type="number"
+                  className="form-control"
+                />
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">
+                  Good Cholestrol eg:60 normal
+                </div>
               </div>
               <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
                 <label htmlFor="" className="form-label">
                   LDL cholesterol
                 </label>
-                <input required type="number" className="form-control" />
-                <div class="valid-feedback">Looks good!</div>
+                <input
+                  name="ldlcholesterol"
+                  value={inputField.ldlcholesterol}
+                  onChange={inputHandler}
+                  min={0}
+                  required
+                  type="number"
+                  className="form-control"
+                />
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">
+                  Bad Cholestrol eg:Under 100 normal
+                </div>
+              </div>
+              <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
+                <label htmlFor="" className="form-label">
+                  ECG p wave
+                </label>
+                <input
+                  name="ecgpwave"
+                  onChange={inputHandler}
+                  value={inputField.ecgpwave}
+                  required
+                  type="text"
+                  className="form-control"
+                />
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">81 to 130 ms</div>
+              </div>
+              <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
+                <label htmlFor="" className="form-label">
+                  Heart Rate
+                </label>
+                <input
+                  name="heartRate"
+                  onChange={inputHandler}
+                  value={inputField.heartRate}
+                  required
+                  type="text"
+                  className="form-control"
+                />
+
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">eg:60-100 BPM</div>
+              </div>
+              <div className="col col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 was-validated">
+                <label htmlFor="" className="form-label">
+                  Cost
+                </label>
+                <input
+                  value={inputField.cost}
+                  onChange={inputHandler}
+                  name="cost"
+                  min={0}
+                  required
+                  type="number"
+                  className="form-control"
+                />
+                <div className="valid-feedback">Looks good!</div>
               </div>
               <div className="col col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-end">
-                <button type="submit" className="btn btn-outline-primary mb-2">
+                <button
+                  type="submit"
+                  onClick={submitResults}
+                  className="btn btn-outline-primary mb-2"
+                >
                   Submit
                 </button>
               </div>

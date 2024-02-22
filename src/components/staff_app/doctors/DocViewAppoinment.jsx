@@ -45,6 +45,8 @@ const DocViewAppoinment = () => {
   return (
     <div>
       <DocNavbar />
+      <div className="mt-5">hi</div>
+      <div className="mt-4">hi</div>
       <div className="text-center mt-5">
         <h2
           className="mb-12 section-heading wow fadeInDown"
@@ -56,7 +58,7 @@ const DocViewAppoinment = () => {
       <div className="container">
         {isLoading ? (
           <div id="preloader">
-            <i class="bi bi-heart-pulse"></i>
+            <i className="bi bi-heart-pulse"></i>
           </div>
         ) : (
           <div className="row">
