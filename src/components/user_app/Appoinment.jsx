@@ -39,10 +39,10 @@ const Appoinment = ({ doctorId }) => {
   };
 
   useEffect(() => {
-    disableAppoinments();
+    disableAppointments();
   }, [inputField.date]);
 
-  const readvalue = () => {
+  const submitAppointment = () => {
     axios
       .post("http://127.0.0.1:8000/user/bookDoctor/", inputField)
       .then((response) => {
@@ -51,7 +51,7 @@ const Appoinment = ({ doctorId }) => {
       });
   };
 
-  const disableAppoinments = () => {
+  const disableAppointments = () => {
     console.log(inputField);
     axios
       .post("http://127.0.0.1:8000/user/disableAppoinments/", inputField)
@@ -109,7 +109,7 @@ const Appoinment = ({ doctorId }) => {
               <div className="col col-sm-12 colmd-12 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-center my-3">
                 <button
                   type="submit"
-                  onClick={readvalue}
+                  onClick={submitAppointment}
                   className="btn bg-blue-500 text-white"
                 >
                   Book Now

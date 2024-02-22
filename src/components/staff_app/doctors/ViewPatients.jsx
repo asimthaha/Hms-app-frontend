@@ -3,7 +3,6 @@ import DocNavbar from "./DocNavbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "./Modal";
-import DocViewAppoinment from "./DocViewAppoinment";
 
 const ViewPatients = () => {
   const [inputField, changeInputField] = useState({
@@ -95,8 +94,8 @@ const ViewPatients = () => {
       <DocNavbar />
       <div className="mt-5">hi</div>
       <div className="mt-4">hi</div>
-      <div className="row">
-        <div className="col col-7">
+      <div className="row d-flex justify-content-center">
+        <div className="col col-10">
           <div className="container mt-5">
             <div className="row">
               <h2
@@ -372,9 +371,6 @@ const ViewPatients = () => {
               );
             })}
           </div>
-        </div>
-        <div className="col col-5 border-start border-primary">
-          <DocViewAppoinment />
         </div>
       </div>
     </>

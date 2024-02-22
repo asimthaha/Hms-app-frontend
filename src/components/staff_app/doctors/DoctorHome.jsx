@@ -16,8 +16,8 @@ const DoctorHome = () => {
     <div>
       <DocNavbar />
       {isLoading ? (
-        <div id="preloader" class="infinity">
-          <i class="bi bi-heart-pulse"></i>
+        <div id="preloader" className="infinity">
+          <i className="bi bi-heart-pulse"></i>
         </div>
       ) : (
         <>
