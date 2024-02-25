@@ -18,19 +18,16 @@ const PharmMeds = () => {
       });
   };
 
-  const updateHandler = (total_rate) => {
-    console.log("called");
-    changeData({
-      ...data,
-      total_rate: total_rate,
-    });
+  const updateHandler = (total_rate, index) => {
+    const updatedData = [...data]; // Create a copy of the data array
+    updatedData[index] = { ...updatedData[index], total_rate: total_rate };
+    changeData(updatedData);
   };
 
-  const toggleStatus = (data, status) => {
+  const updateValue = (data, total_rate) => {
     const param = {
       medicineid: data.medicineid,
-      status: status,
-      total_rate: data.total_rate,
+      total_rate: total_rate,
     };
 
     axios
@@ -65,7 +62,6 @@ const PharmMeds = () => {
                   <th scope="col">Name</th>
                   <th scope="col">Date</th>
                   <th scope="col">Medcines</th>
-                  <th scope="col">Status</th>
                   <th scope="col">Rate</th>
                   <th className="d-flex justify-content-center" scope="col">
                     Accept
@@ -92,35 +88,23 @@ const PharmMeds = () => {
                             );
                           })}
                         </td>
-                        <td>{value.med_status}</td>
                         <td>
                           <input
                             type="number"
                             className="form-control"
                             value={value.total_rate}
-                            onChange={updateHandler}
+                            onChange={(e) =>
+                              updateHandler(e.target.value, index)
+                            }
                           />
                         </td>
                         <td className="d-flex justify-content-center">
                           <button
                             className="btn btn-outline-success mr-2"
                             type="button"
-                            disabled={value.med_status === MedStatus.Accept}
-                            onClick={() =>
-                              toggleStatus(value, MedStatus.Accept)
-                            }
+                            onClick={() => updateValue(value, value.total_rate)}
                           >
-                            Accept
-                          </button>
-                          <button
-                            className="btn btn-outline-danger"
-                            type="button"
-                            disabled={value.med_status === MedStatus.Decline}
-                            onClick={() =>
-                              toggleStatus(value, MedStatus.Decline)
-                            }
-                          >
-                            Decline
+                            Update
                           </button>
                         </td>
                       </tr>
