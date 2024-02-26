@@ -1,6 +1,7 @@
 import React from "react";
 import Topbar from "./Topbar";
 import { Link } from "react-router-dom";
+import Notifications from "./user_app/Notifications";
 
 const Navbar = () => {
   return (
@@ -17,10 +18,10 @@ const Navbar = () => {
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
           </Link>
 
-          <nav id="navbar" className="navbar order-last order-lg-0">
+          <nav id="navbar" className="navbar m-1">
             <ul>
               <li>
-                <Link className="nav-link scrollto active" to="/">
+                <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
@@ -39,29 +40,23 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/user/doctors">
+                <Link className="nav-link" to="/user/doctors">
                   Doctors
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/user/results">
+                <Link className="nav-link" to="/user/results">
                   Results
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/user/medicines">
+                <Link className="nav-link" to="/user/medicines">
                   Medicines
                 </Link>
               </li>
             </ul>
           </nav>
-          <button type="button" className="btn position-relative">
-            <i className="bi bi-bell-fill"></i>
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              3+
-              <span className="visually-hidden">unread messages</span>
-            </span>
-          </button>
+          <Notifications />
           <div className="ml-2">
             {sessionStorage.getItem("userid") ? (
               <p>{sessionStorage.getItem("name").toLocaleUpperCase()}</p>
