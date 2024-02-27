@@ -84,6 +84,18 @@ const LabResults = () => {
       .then((response) => {
         alert(response.data.status);
       });
+
+    const param = {
+      user_id: inputField.userid,
+      status: "False",
+      message: "Result",
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/staff/addNotifications/", param)
+      .then((response) => {
+        alert(response.data.status);
+      });
   };
 
   return (

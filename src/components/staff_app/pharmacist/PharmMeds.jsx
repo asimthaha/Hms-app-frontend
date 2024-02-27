@@ -36,6 +36,18 @@ const PharmMeds = () => {
         changeData(response.data);
         fetchData();
       });
+
+    const notification_data = {
+      user_id: data.userid,
+      status: "False",
+      message: "Medicine",
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/staff/addNotifications/", notification_data)
+      .then((response) => {
+        alert(response.data.status);
+      });
   };
 
   useEffect(() => {
