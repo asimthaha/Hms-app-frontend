@@ -19,16 +19,15 @@ const Notifications = () => {
   const [data, changeData] = useState([]);
 
   const [count, setCount] = useState(0);
-  console.log("count", count);
 
   const fetchData = () => {
     axios
       .post("http://127.0.0.1:8000/user/viewNotificationsUser/", inputData)
       .then((response) => {
-        debugger;
         changeData(response.data);
+        console.log(response.data);
         const newCount = response.data.filter(
-          (noti) => noti.status === false
+          (noti) => noti.noti_status === false
         ).length;
         setCount(newCount);
       });
@@ -85,12 +84,18 @@ const Notifications = () => {
                     view now
                   </Link>
                   <div className="d-flex justify-content-end">
-                    <button
-                      disabled={value.status === NotiStatus.true}
-                      onClick={() => updateValue(value, value.notification_id)}
-                    >
-                      mark as read
-                    </button>
+                    {value.noti_status === NotiStatus.true ? (
+                      <p>already read</p>
+                    ) : (
+                      <button
+                        disabled={value.noti_status === NotiStatus.true}
+                        onClick={() =>
+                          updateValue(value, value.notification_id)
+                        }
+                      >
+                        mark as read
+                      </button>
+                    )}
                   </div>
                 </Toast.Body>
               );

@@ -1,10 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Payments from "./Payments";
 
 const Medicines = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("userid")) {
+    navigate("/login");
+  }
   const [input, setInput] = useState({
     userid: sessionStorage.getItem("userid"),
   });

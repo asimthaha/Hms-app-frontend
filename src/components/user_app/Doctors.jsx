@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import OffCanvas from "./OffCanvas";
 
 const Doctors = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("userid")) {
+    navigate("/login");
+  }
   const [data, changeData] = useState([]);
 
   const fetchData = () => {
