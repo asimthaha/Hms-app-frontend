@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BmiCalc = () => {
-  const [inputField, setInputField] = useState([
-    {
-      height: "",
-      weight: "",
-    },
-  ]);
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("userid")) {
+    navigate("/login");
+  }
+  const [inputField, setInputField] = useState({
+    user_id: sessionStorage.getItem("userid"),
+    height: "",
+    weight: "",
+  });
 
   const inputHandler = (event) => {
     setInputField({ ...inputField, [event.target.name]: event.target.value });
@@ -31,12 +35,15 @@ const BmiCalc = () => {
       <div className="mt-5">hi</div>
       <section id="bmi" className="bmi container">
         <div className="container d-flex align-items-center flex-column">
-          <div className="row">
-            <div className="col text-center">
-              <h1>BMI Calculator</h1>
-            </div>
+          <div className="mt-5 text-center">
+            <h2
+              className="mb-12 section-heading wow fadeInDown"
+              data-wow-delay="0.3s"
+            >
+              Bmi Calculator
+            </h2>
           </div>
-          <section className="card w-50 d-flex align-items-center mt-3">
+          <section className="card w-50 d-flex align-items-center">
             <div className="row">
               <div className="col">
                 <form className="row g-3 needs-validation">

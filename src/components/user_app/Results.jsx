@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Results = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("userid")) {
+    navigate("/login");
+  }
+
   const [inputData, setInputData] = useState({
     userid: sessionStorage.getItem("userid"),
   });
@@ -30,11 +36,11 @@ const Results = () => {
 
   const fetchData = () => {
     console.log(data);
-    // axios
-    //   .post("http://127.0.0.1:8000/user/viewResultsUser/", inputData)
-    //   .then((response) => {
-    //     setData(response.data);
-    //   });
+    axios
+      .post("http://127.0.0.1:8000/user/viewResultsUser/", inputData)
+      .then((response) => {
+        setData(response.data);
+      });
   };
 
   useEffect(() => {
@@ -57,37 +63,37 @@ const Results = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <div className="row d-flex justify-content-around">
-              <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
-                {data.map((value, index) => {
-                  return (
-                    <div
-                      class="card border-primary shadow"
-                      key={`results_${index}`}
-                    >
-                      <div class="card-header d-flex justify-content-between bg-blue-400 hover:bg-blue-500">
+            <div className="row d-flex justify-content-around g-3">
+              {data.map((value, index) => {
+                return (
+                  <div
+                    key={`results_${index}`}
+                    className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4"
+                  >
+                    <div className="card border-primary shadow">
+                      <div className="card-header d-flex justify-content-between bg-blue-400 hover:bg-blue-500">
                         <div>Doctor: {value.doctors.name}</div>
                         <div>Date: {value.testDate}</div>
                       </div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-around">
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item d-flex justify-content-around">
                           <div>ECG: {value.ecgpwave}</div>
                           <div>HeartRate: {value.heartRate}</div>
                         </li>
-                        <li class="list-group-item d-flex justify-content-around p-3">
+                        <li className="list-group-item d-flex justify-content-around p-3">
                           <div>Blood Pressure: {value.bloodPressure}</div>
                           <div>Oxygen Saturation: {value.oxygenSaturation}</div>
                         </li>
-                        <li class="list-group-item d-flex justify-content-around">
+                        <li className="list-group-item d-flex justify-content-around">
                           <div>Cholestrol: {value.cholesterol}</div>
                           <div>HDL: {value.hdlcholesterol}</div>
                           <div>LDL: {value.ldlcholesterol}</div>
                         </li>
                       </ul>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

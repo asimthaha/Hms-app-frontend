@@ -1,11 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../../Navbar";
+import { Link, useNavigate } from "react-router-dom";
 
 const HeartPredict = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("userid")) {
+    navigate("/login");
+  }
   const [result, setResult] = useState([]);
 
   const [inputField, setInputField] = useState({
+    user_id: sessionStorage.getItem("userid"),
     age: "",
     sex: "",
     cp: "",
@@ -388,10 +394,14 @@ const HeartPredict = () => {
                         </a>
                       </p>
                     </div>
-                    <div>
-                      <button type="submit" className="btn">
+                    <div className="m-3">
+                      <Link
+                        to="/user/doctors"
+                        type="button"
+                        className="btn btn-outline-primary"
+                      >
                         Take Appoinment
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
