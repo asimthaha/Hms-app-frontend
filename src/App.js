@@ -19,7 +19,7 @@ import Results from "./components/user_app/Results";
 import LabHome from "./components/staff_app/labassistant/LabHome";
 import LabResults from "./components/staff_app/labassistant/LabResults";
 import Payments from "./components/user_app/Payments";
-import BmiCharts from "./components/user_app/Predictions/BmiCharts";
+import BmiFull from "./components/user_app/Predictions/BmiFull";
 
 function App() {
   return (
@@ -32,8 +32,7 @@ function App() {
         <Route path="user/services" element={<Services />} />
         <Route path="user/doctors" element={<Doctors />} />
         <Route path="user/predictHeart" element={<HeartPredict />} />
-        <Route path="user/bmi" element={<BmiCalc />} />
-        <Route path="user/bmicharts" element={<BmiCharts />} />
+        <Route path="user/bmi" element={<BmiFull />} />
         <Route path="user/medicines" element={<Medicines />} />
         <Route path="user/results" element={<Results />} />
         <Route path="user/payments" element={<Payments />} />
