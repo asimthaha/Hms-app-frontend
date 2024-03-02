@@ -3,7 +3,6 @@ import "./App.css";
 import Services from "./components/user_app/Services";
 import Home from "./components/Home";
 import Doctors from "./components/user_app/Doctors";
-import BmiCalc from "./components/user_app/Predictions/BmiCalc";
 import HeartPredict from "./components/user_app/Predictions/HeartPredict";
 import Login from "./components/user_app//LoginRegister/Login";
 import Register from "./components/user_app//LoginRegister/Register";
@@ -20,6 +19,7 @@ import LabHome from "./components/staff_app/labassistant/LabHome";
 import LabResults from "./components/staff_app/labassistant/LabResults";
 import Payments from "./components/user_app/Payments";
 import BmiFull from "./components/user_app/Predictions/BmiFull";
+import DocCharts from "./components/staff_app/doctors/DocCharts";
 
 function App() {
   return (
