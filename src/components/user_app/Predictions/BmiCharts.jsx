@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 const BmiCharts = () => {
   const [inputData, setInputData] = useState({
@@ -23,7 +32,21 @@ const BmiCharts = () => {
     fetchData();
   }, []);
 
-  return <div>hiiii</div>;
+  return (
+    <div>
+      <div className="mt-5">
+        <LineChart width={500} height={300} data={data}>
+          <Line type="monotone" dataKey="weight" stroke="#8884d8" />
+          <Line type="monotone" dataKey="height" stroke="#82ca9d" />
+          <CartesianGrid stroke="#ccc" />
+          <XAxis dataKey="created_at" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+        </LineChart>
+      </div>
+    </div>
+  );
 };
 
 export default BmiCharts;
