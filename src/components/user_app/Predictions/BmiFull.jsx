@@ -1,6 +1,7 @@
 import React from "react";
 import BmiCalc from "./BmiCalc";
 import BmiCharts from "./BmiCharts";
+import DocCharts from "../../staff_app/doctors/DocCharts";
 
 const BmiFull = () => {
   return (
@@ -20,7 +21,14 @@ const BmiFull = () => {
                 <BmiCalc />
               </div>
               <div className="col col-3 d-flex justify-content-center">
-                <BmiCharts />
+                <div className="row">
+                  <div className="col">
+                    <BmiCharts />
+                  </div>
+                  <div className="col">
+                    <DocCharts />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
