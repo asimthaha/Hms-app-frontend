@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DocNavbar from "./DocNavbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const DocStatus = {
   Accept: "Accept",
@@ -8,6 +9,11 @@ export const DocStatus = {
 };
 
 const DocViewAppoinment = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("staffid")) {
+    navigate("/staffLogin");
+  }
+
   const [isLoading, changeLoading] = useState(true);
   const [inputData, setInputData] = useState({
     doctorid: sessionStorage.getItem("staffid"),

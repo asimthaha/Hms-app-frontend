@@ -24,7 +24,7 @@ const DoctorHome = () => {
           <section id="hero" className="d-flex align-items-center">
             <div className="container">
               {username ? <h2>HEY {username.toLocaleUpperCase()}</h2> : <p></p>}
-              <h1>Welcome to CardioCare</h1>
+              <h1>Welcome to CardioCare Doctor</h1>
               <h2>Helping People is what we do</h2>
               <Link
                 to="/doctor/viewAppoinments"

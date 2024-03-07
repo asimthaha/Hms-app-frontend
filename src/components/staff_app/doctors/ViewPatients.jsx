@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import DocNavbar from "./DocNavbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "./Modal";
 
 const ViewPatients = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("staffid")) {
+    navigate("/staffLogin");
+  }
   const [inputField, changeInputField] = useState({
     name: "asim",
   });

@@ -19,7 +19,6 @@ import LabHome from "./components/staff_app/labassistant/LabHome";
 import LabResults from "./components/staff_app/labassistant/LabResults";
 import Payments from "./components/user_app/Payments";
 import BmiFull from "./components/user_app/Predictions/BmiFull";
-import DocCharts from "./components/staff_app/doctors/DocCharts";
 
 function App() {
   return (

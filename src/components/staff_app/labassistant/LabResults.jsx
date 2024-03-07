@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import LabNavbar from "./LabNavbar";
 import Select from "react-select";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LabResults = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("staffid")) {
+    navigate("/staffLogin");
+  }
   const currentDate = new Date();
 
   const [data, setData] = useState([]);
@@ -87,14 +92,15 @@ const LabResults = () => {
 
     const param = {
       user_id: inputField.userid,
-      status: "False",
+      noti_status: "false",
       message: "Result",
     };
+    console.log(param);
 
     axios
       .post("http://127.0.0.1:8000/staff/addNotifications/", param)
       .then((response) => {
-        alert(response.data.status);
+        // alert(response.data.status);
       });
   };
 
