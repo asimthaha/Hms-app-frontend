@@ -32,7 +32,7 @@ const Doctors = () => {
       <Navbar />
       <section
         id="team"
-        className="py-24 text-center d-flex align-items-center mt-5"
+        className="py-24 text-center d-flex align-items-center mt-5 line"
       >
         <div className="container">
           <div className="text-center">

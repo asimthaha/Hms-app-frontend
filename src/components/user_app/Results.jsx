@@ -71,7 +71,7 @@ const Results = () => {
                     className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4"
                   >
                     <div className="card border-primary shadow">
-                      <div className="card-header d-flex justify-content-between bg-blue-400 hover:bg-blue-500">
+                      <div className="card-header d-flex justify-content-between">
                         <div>Doctor: {value.doctors.name}</div>
                         <div>Date: {value.testDate}</div>
                       </div>
