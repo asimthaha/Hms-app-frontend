@@ -51,11 +51,11 @@ const Doctors = () => {
                   key={`doctor_${index}`}
                   className="max-w-sm sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 card-group"
                 >
-                  <div className="card team-item">
+                  <div className="card team-item shadow">
                     <div className="team-img relative d-flex justify-content-center flex-column">
                       <img
                         className="img-fluid"
-                        src={"http://127.0.0.1:8000/" + value.photo}
+                        src={"http://127.0.0.1:8000" + value.photo}
                         alt="assets/img/doctors/doctors-3.jpg"
                       />
                       <div className="team-overlay">

@@ -24,7 +24,7 @@ const PharmHome = () => {
           <section id="hero" className="d-flex align-items-center">
             <div className="container">
               {username ? <h2>HEY {username.toLocaleUpperCase()}</h2> : <p></p>}
-              <h1>Welcome to CardioCare</h1>
+              <h1>Welcome to CardioCare Pharmacist</h1>
               <h2>Helping People is what we do</h2>
               <a href="#about" className="btn-get-started scrollto">
                 Get Started

@@ -3,14 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Payments = ({ rate }) => {
-  const [amount, changeAmount] = useState(1);
-
-  useEffect(() => {
-    changeAmount({
-      ...amount,
-      rate: rate,
-    });
-  }, [rate]);
+  const amount = rate;
 
   // complete order
   const complete_order = (paymentID, orderID, signature) => {
@@ -40,7 +33,7 @@ const Payments = ({ rate }) => {
       method: "post",
       url: "http://127.0.0.1:8000/user/payment/create/",
       data: {
-        amount: amount.rate,
+        amount: amount,
         currency: "INR",
       },
     })
@@ -111,9 +104,9 @@ const Payments = ({ rate }) => {
           <div className="col">
             <div className="row g-3">
               <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
-                <Link className="btn btn-primary" onClick={razorPay}>
+                <button className="btn btn-primary" onClick={razorPay}>
                   Pay Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>

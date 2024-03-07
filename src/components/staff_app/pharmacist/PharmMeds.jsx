@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PharmNavbar from "./PharmNavbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const MedStatus = {
   Accept: "Accept",
@@ -8,6 +9,10 @@ export const MedStatus = {
 };
 
 const PharmMeds = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("staffid")) {
+    navigate("/staffLogin");
+  }
   const [data, changeData] = useState([]);
 
   const fetchData = () => {
@@ -39,9 +44,10 @@ const PharmMeds = () => {
 
     const notification_data = {
       user_id: data.userid,
-      status: "False",
+      noti_status: "false",
       message: "Medicine",
     };
+    console.log(notification_data);
 
     axios
       .post("http://127.0.0.1:8000/staff/addNotifications/", notification_data)

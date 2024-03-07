@@ -40,7 +40,9 @@ const Register = () => {
               <div className="card border border-primary-subtle shadow">
                 <div className="d-flex justify-content-center m-3 pb-1">
                   <i className="fas fa-cubes fa-2x me-3 hover:text-sky-800"></i>
-                  <span className="h1 fw-bold mb-0 text-blue-500">Medilab</span>
+                  <span className="h1 fw-bold mb-0 text-blue-500">
+                    CARDIOCARE
+                  </span>
                 </div>
                 <form
                   className="row g-3 needs-validation m-1"
@@ -64,7 +66,8 @@ const Register = () => {
                         />
                         <div className="valid-feedback">Looks good!</div>
                         <div className="invalid-feedback">
-                          Please enter Name.
+                          Please enter a valid name (only letters, spaces,
+                          hyphens, and apostrophes are allowed).
                         </div>
                       </div>
                     </div>
@@ -76,6 +79,7 @@ const Register = () => {
                         <input
                           required
                           type="email"
+                          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                           className="form-control form-control-lg"
                           name="email"
                           value={inputField.email}
@@ -83,7 +87,7 @@ const Register = () => {
                         />
                         <div className="valid-feedback">Looks good!</div>
                         <div className="invalid-feedback">
-                          Please enter Email.
+                          Please enter a valid email like email@gmail.com.
                         </div>
                       </div>
                     </div>
@@ -97,12 +101,15 @@ const Register = () => {
                           type="password"
                           className="form-control form-control-lg"
                           name="password"
+                          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
                           value={inputField.password}
                           onChange={inputHandler}
                         />
                         <div className="valid-feedback">Looks good!</div>
                         <div className="invalid-feedback">
-                          Please enter password.
+                          Password must contain at least one uppercase letter,
+                          one lowercase and atleast one digit, and be at least 8
+                          characters long.
                         </div>
                       </div>
                     </div>

@@ -29,6 +29,7 @@ const Notifications = () => {
         const newCount = response.data.filter(
           (noti) => noti.noti_status === false
         ).length;
+        console.log(newCount);
         setCount(newCount);
       });
   };
