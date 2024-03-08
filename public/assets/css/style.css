@@ -909,3 +909,40 @@ section {
 .doctors .member .social a + a {
   margin-left: 8px;
 }
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.background::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #49a6c2, #1977cc);
+  z-index: -1;
+}
+
+.background::after {
+  content: "";
+  position: fixed;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: linear-gradient(to right, #e7e3e3, #ffffff);
+  transform: skewX(200deg);
+  box-shadow: 0 5px 30px 2px hsla(0, 0%, 0%, 0.5);
+  z-index: -1;
+}
