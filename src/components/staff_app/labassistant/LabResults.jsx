@@ -93,7 +93,7 @@ const LabResults = () => {
     const param = {
       user_id: inputField.userid,
       noti_status: "false",
-      message: "Result",
+      message: "A new Result has been added",
     };
     console.log(param);
 

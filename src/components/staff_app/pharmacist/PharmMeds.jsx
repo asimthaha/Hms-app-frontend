@@ -45,7 +45,7 @@ const PharmMeds = () => {
     const notification_data = {
       user_id: data.userid,
       noti_status: "false",
-      message: "Medicine",
+      message: "your medicines are ready to dispense now",
     };
     console.log(notification_data);
 
