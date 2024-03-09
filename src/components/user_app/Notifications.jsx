@@ -74,7 +74,7 @@ const Notifications = () => {
             data.map((value, index) => {
               return (
                 <Toast.Body key={`notification_${index}`} className="border">
-                  {value.message} has been added..
+                  {value.message + " "}
                   <Link
                     to={
                       value.message === "Result"

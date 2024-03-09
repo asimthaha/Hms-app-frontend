@@ -42,6 +42,18 @@ const DocViewAppoinment = () => {
         setAppoinmentData(response.data);
         getAppointments();
       });
+    const noti_data = {
+      user_id: data.userid,
+      noti_status: "false",
+      message: "Your appointment has been " + status,
+    };
+    console.log("noti", noti_data);
+
+    axios
+      .post("http://127.0.0.1:8000/staff/addNotifications/", noti_data)
+      .then((response) => {
+        // alert(response.data.status);
+      });
   };
 
   useEffect(() => {

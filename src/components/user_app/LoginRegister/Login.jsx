@@ -126,7 +126,7 @@ const Login = () => {
                           </Link>
                         </p>
                         <p className="mb-5 pb-lg-2">
-                          Staff Login{" "}
+                          Staff login{" "}
                           <Link className="text-primary" to="/staffLogin">
                             here
                           </Link>
