@@ -123,10 +123,7 @@ const ViewPatients = () => {
                     />
                   </div>
                   <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                    <button
-                      onClick={readValue}
-                      className="btn btn-outline-primary"
-                    >
+                    <button onClick={readValue} className="btn btn-secondary">
                       Search
                     </button>
                   </div>

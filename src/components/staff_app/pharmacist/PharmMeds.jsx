@@ -74,7 +74,7 @@ const PharmMeds = () => {
         </div>
         <div className="row">
           <div className="col d-flex justify-content-around">
-            <table className="table table-bordered w-3/4">
+            <table className="table table-bordered w-3/4 shadow">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
@@ -82,7 +82,7 @@ const PharmMeds = () => {
                   <th scope="col">Medcines</th>
                   <th scope="col">Rate</th>
                   <th className="d-flex justify-content-center" scope="col">
-                    Accept
+                    Submit
                   </th>
                 </tr>
               </thead>
@@ -116,9 +116,9 @@ const PharmMeds = () => {
                             }
                           />
                         </td>
-                        <td className="d-flex justify-content-center">
+                        <td>
                           <button
-                            className="btn btn-outline-success mr-2"
+                            className="btn btn-outline-success"
                             type="button"
                             onClick={() => updateValue(value, value.total_rate)}
                           >
