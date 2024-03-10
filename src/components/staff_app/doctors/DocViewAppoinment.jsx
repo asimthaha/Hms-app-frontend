@@ -83,7 +83,7 @@ const DocViewAppoinment = () => {
             <div className="col">
               <div className="row">
                 <div className="col d-flex justify-content-around">
-                  <table className="table table-bordered table-striped w-3/4">
+                  <table className="table table-bordered table-striped w-3/4 shadow">
                     <thead>
                       <tr>
                         <th scope="col">Name</th>
