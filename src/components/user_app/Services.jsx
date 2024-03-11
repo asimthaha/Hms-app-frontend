@@ -40,8 +40,8 @@ const Services = () => {
                       <i className="bx bx-receipt"></i>
                       <h4>Predict your Health</h4>
                       <p>
-                        Consequuntur sunt aut quasi enim aliquam quae harum
-                        pariatur laboris nisi ut aliquip
+                        Predict your cardiac health using our own heart disease
+                        prediction model.
                       </p>
                     </Link>
                   </div>
@@ -50,8 +50,9 @@ const Services = () => {
                       <i className="bx bx-cube-alt"></i>
                       <h4>Doctors</h4>
                       <p>
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt
+                        Our esteemed doctors: Physicians, surgeons, dentists,
+                        chiropodists, university professors and, in some
+                        countries, pharmacists. Take an appointment now.
                       </p>
                     </Link>
                   </div>
@@ -59,10 +60,7 @@ const Services = () => {
                     <Link className="icon-box mt-4 mt-xl-0" to="/user/results">
                       <i className="bx bx-images"></i>
                       <h4>Results</h4>
-                      <p>
-                        Aut suscipit aut cum nemo deleniti aut omnis. Doloribus
-                        ut maiores omnis facere
-                      </p>
+                      <p>View your blood results here. click to view.</p>
                     </Link>
                   </div>
                 </div>
