@@ -39,8 +39,8 @@ const PharmPay = () => {
                 <div key={`payments_${index}`} className="card shadow">
                   <div className="card-header">Name: {value.user.name}</div>
                   <div className="card-body">
-                    Amount {value.amount} recieved
-                    <div>{value.user.email}</div>
+                    Amount: {value.amount} recieved
+                    <div>email:{value.user.email}</div>
                   </div>
                 </div>
               );

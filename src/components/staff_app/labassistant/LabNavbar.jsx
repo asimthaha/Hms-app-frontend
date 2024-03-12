@@ -20,7 +20,7 @@ const LabNavbar = () => {
         </button>
         <div className="container d-flex align-items-center">
           <h1 className="logo me-auto">
-            <Link className="navbar-brand" to="/doctor">
+            <Link className="navbar-brand" to="/labAssistant">
               CARDIOCARE
             </Link>
           </h1>
@@ -41,6 +41,11 @@ const LabNavbar = () => {
               <li>
                 <Link className="nav-link" to="/labAssistant/results">
                   Results
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to="/labAssistant/payments">
+                  Payments
                 </Link>
               </li>
             </ul>

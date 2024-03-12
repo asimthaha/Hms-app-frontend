@@ -32,9 +32,9 @@ const Home = () => {
               )}
               <h1>Welcome to CardioCare</h1>
               <h2>Helping People is what we do</h2>
-              <a href="#about" className="btn-get-started scrollto">
+              <Link to="/user/doctors" className="btn-get-started scrollto">
                 Get Started
-              </a>
+              </Link>
             </div>
           </section>
         </>

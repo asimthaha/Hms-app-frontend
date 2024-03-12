@@ -1,38 +1,50 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LabNavbar from "./LabNavbar";
 
 const LabPay = () => {
+  const navigate = useNavigate();
+  if (!sessionStorage.getItem("staffid")) {
+    navigate("/staffLogin");
+  }
+  const [data, changeData] = useState([]);
+
+  const fetchData = () => {
+    axios.post("http://127.0.0.1:8000/staff/viewPayments/").then((response) => {
+      changeData(response.data);
+      console.log(response.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
-      <div className="mt-5">hi</div>
-      <div className="mt-4">hi</div>
-      <div className="text-center mt-5">
-        <h2
-          className="mb-12 section-heading wow fadeInDown"
-          data-wow-delay="0.3s"
-        >
-          payments
-        </h2>
-      </div>
+      <LabNavbar />
       <div className="container">
+        <div className="mt-5">hi</div>
+        <div className="mt-5">hi</div>
+
+        <div className="text-center my-5">
+          <h2 className="section-heading wow fadeInDown" data-wow-delay="0.3s">
+            Payments
+          </h2>
+        </div>
         <div className="row">
-          <div className="col">
-            <div class="row">
-              <div class="col">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </p>
-                    <Link to="#" class="btn btn-primary">
-                      Go somewhere
-                    </Link>
+          <div className="col d-flex justify-content-around">
+            {data.map((value, index) => {
+              return (
+                <div key={`payments_${index}`} className="card shadow">
+                  <div className="card-header">Name: {value.user.name}</div>
+                  <div className="card-body">
+                    Amount {value.amount} recieved
+                    <div>{value.user.email}</div>
                   </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -20,6 +20,7 @@ import LabResults from "./components/staff_app/labassistant/LabResults";
 import Payments from "./components/user_app/Payments";
 import BmiFull from "./components/user_app/Predictions/BmiFull";
 import Test from "./components/Test";
+import LabPay from "./components/staff_app/labassistant/LabPay";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
 
         <Route path="labAssistant" element={<LabHome />} />
         <Route path="labAssistant/results" element={<LabResults />} />
+        <Route path="labAssistant/payments" element={<LabPay />} />
       </Routes>
     </BrowserRouter>
   );

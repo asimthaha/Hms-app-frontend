@@ -45,7 +45,7 @@ const DocViewAppoinment = () => {
     const noti_data = {
       user_id: data.userid,
       noti_status: "false",
-      message: "Your appointment has been " + status,
+      message: "Your appointment has been " + status + "ed",
     };
     console.log("noti", noti_data);
 
