@@ -75,6 +75,7 @@ const Login = () => {
                               Username or email
                             </label>
                             <input
+                              autofocus
                               required
                               type="text"
                               className="form-control form-control-lg"
