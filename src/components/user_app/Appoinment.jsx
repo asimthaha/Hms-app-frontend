@@ -13,9 +13,9 @@ const Appoinment = ({ doctorId }) => {
 
   const [inputField, changeInputField] = useState({
     userid: sessionStorage.getItem("userid"),
-    doctorid: "",
+    doctorid: 0,
     time: "",
-    date: "",
+    date: 0,
   });
 
   useEffect(() => {
@@ -43,6 +43,7 @@ const Appoinment = ({ doctorId }) => {
   }, [inputField.date]);
 
   const submitAppointment = () => {
+    console.log(inputField);
     axios
       .post("http://127.0.0.1:8000/user/bookDoctor/", inputField)
       .then((response) => {
@@ -52,9 +53,13 @@ const Appoinment = ({ doctorId }) => {
   };
 
   const disableAppointments = () => {
-    console.log(inputField);
+    const disable_data = {
+      date: inputField.date,
+      staffid: inputField.doctorid,
+    };
+    // console.log(disable_data);
     axios
-      .post("http://127.0.0.1:8000/user/disableAppoinments/", inputField)
+      .post("http://127.0.0.1:8000/user/disableAppoinments/", disable_data)
       .then((response) => {
         // console.log(response.data);
         setAvailableTimes(response.data);
