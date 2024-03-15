@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [inputField, setInputField] = useState({
     email: "iamasimthaha@gmail.com",
-    password: "1234",
+    password: "asimthaha@123",
   });
 
   const inputHandler = (event) => {
