@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const StaffLogin = () => {
   const [inputField, setInputField] = useState({
     username: "devnand",
-    password: "1234",
+    password: "devnand@123",
   });
 
   const inputHandler = (event) => {

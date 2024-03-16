@@ -4,6 +4,7 @@ import Navbar from "../../Navbar";
 import { Link, useNavigate } from "react-router-dom";
 
 const HeartPredict = () => {
+  const [isLoading, changeLoading] = useState(0);
   const navigate = useNavigate();
   if (!sessionStorage.getItem("userid")) {
     navigate("/login");
@@ -35,11 +36,13 @@ const HeartPredict = () => {
   };
 
   const readValue = () => {
+    changeLoading(true);
     axios
       .post("http://127.0.0.1:8000/user/predictHeart/", inputField)
       .then((response) => {
         console.log(response.data);
         setResult(response.data);
+        changeLoading(false);
       });
   };
 
@@ -376,6 +379,10 @@ const HeartPredict = () => {
         </div>
         {result == "" ? (
           <p className="mt-3">Please provide input to check your health</p>
+        ) : isLoading == true ? (
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         ) : (
           <div className="row mt-3">
             <div className="col">
