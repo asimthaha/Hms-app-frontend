@@ -9,7 +9,7 @@ const DoctorHome = () => {
   useEffect(() => {
     setTimeout(() => {
       changeLoading(false);
-    }, 1000);
+    }, 1300);
   }, []);
 
   return (
